@@ -43,7 +43,7 @@ const gallery = [
 
 export default function Charts() {
   return (
-    <main className="pt-16">
+    <main id="main-content" className="pt-16">
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="absolute top-0 right-1/4 w-[500px] h-[400px] bg-cyan/15 rounded-full blur-[120px] -z-10" />

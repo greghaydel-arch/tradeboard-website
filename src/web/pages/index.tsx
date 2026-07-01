@@ -46,7 +46,7 @@ const stats = [
 
 export default function Index() {
   return (
-    <main className="pt-16">
+    <main id="main-content" className="pt-16">
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-40" />

@@ -156,7 +156,7 @@ const comparison = [
 
 export default function Features() {
   return (
-    <main className="pt-16">
+    <main id="main-content" className="pt-16">
       {/* Header */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-30" />
@@ -225,7 +225,7 @@ export default function Features() {
                 <div className="absolute inset-0 gradient-btn rounded-2xl blur-2xl opacity-15" />
                 <img
                   src={f.img}
-                  alt={f.tag}
+                  alt={`${f.tag} feature screenshot`}
                   className="relative rounded-xl border border-tb-border shadow-2xl w-full"
                 />
               </div>
@@ -247,31 +247,46 @@ export default function Features() {
 
         <Reveal delay={0.1}>
           <div className="bg-bg-card border border-tb-border rounded-xl overflow-hidden">
-            <div className="grid grid-cols-3 px-5 py-4 border-b border-tb-border text-sm font-semibold">
-              <span className="text-text-muted">Feature</span>
-              <span className="text-center gradient-text">TradeBoard</span>
-              <span className="text-center text-text-muted">Competitors</span>
-            </div>
-            {comparison.map((row) => (
-              <div
-                key={row.feature}
-                className="grid grid-cols-3 px-5 py-3.5 border-b border-tb-border last:border-0 items-center text-sm"
-              >
-                <span className="text-text">{row.feature}</span>
-                <span className="flex justify-center">
-                  <Check className="text-green" size={18} />
-                </span>
-                <span className="flex justify-center">
-                  {row.others === true ? (
-                    <Check className="text-text-dim" size={18} />
-                  ) : row.others === "partial" ? (
-                    <span className="text-xs text-gold">Partial / Extra cost</span>
-                  ) : (
-                    <X className="text-red/60" size={18} />
-                  )}
-                </span>
-              </div>
-            ))}
+            <table className="w-full text-sm" aria-label="TradeBoard vs competitors feature comparison">
+              <thead>
+                <tr className="border-b border-tb-border">
+                  <th scope="col" className="text-left px-5 py-4 text-text-muted font-semibold">Feature</th>
+                  <th scope="col" className="text-center px-5 py-4 font-semibold">
+                    <span className="gradient-text">TradeBoard</span>
+                  </th>
+                  <th scope="col" className="text-center px-5 py-4 text-text-muted font-semibold">Competitors</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparison.map((row) => (
+                  <tr
+                    key={row.feature}
+                    className="border-b border-tb-border last:border-0"
+                  >
+                    <td className="px-5 py-3.5 text-text">{row.feature}</td>
+                    <td className="px-5 py-3.5 text-center">
+                      <Check className="text-green inline-block" size={18} aria-hidden="true" />
+                      <span className="sr-only">Yes</span>
+                    </td>
+                    <td className="px-5 py-3.5 text-center">
+                      {row.others === true ? (
+                        <>
+                          <Check className="text-text-dim inline-block" size={18} aria-hidden="true" />
+                          <span className="sr-only">Yes</span>
+                        </>
+                      ) : row.others === "partial" ? (
+                        <span className="text-xs text-gold">Partial / Extra cost</span>
+                      ) : (
+                        <>
+                          <X className="text-red/60 inline-block" size={18} aria-hidden="true" />
+                          <span className="sr-only">No</span>
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </Reveal>
       </section>

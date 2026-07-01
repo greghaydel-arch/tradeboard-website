@@ -38,6 +38,10 @@ function Protected({ component: Component }: { component: React.ComponentType })
 function App() {
   return (
     <Provider>
+      {/* Skip-to-content link — first focusable element on every page (WCAG 2.4.1) */}
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <ScrollToTop />
       <Switch>
         {/* Public — coming soon */}

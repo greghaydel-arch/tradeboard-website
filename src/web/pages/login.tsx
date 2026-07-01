@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 
 export default function Login() {
   return (
-    <main className="min-h-screen flex items-center justify-center px-5 relative overflow-hidden">
+    <main id="main-content" className="min-h-screen flex items-center justify-center px-5 relative overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[400px] bg-blue/15 rounded-full blur-[120px] -z-10" />
 
@@ -12,12 +12,12 @@ export default function Login() {
           to="/"
           className="inline-flex items-center gap-1.5 text-sm text-text-muted hover:text-text mb-8 transition-colors"
         >
-          <ArrowLeft size={16} /> Back home
+          <ArrowLeft size={16} aria-hidden="true" /> Back home
         </Link>
 
         <div className="bg-bg-card border border-tb-border rounded-2xl p-8">
           <div className="flex items-center gap-2.5 mb-6">
-            <img src="/logo-candlestick.png" alt="TradeBoard" className="w-8 h-8" />
+            <img src="/logo-candlestick.png" alt="TradeBoard logo" className="w-8 h-8" />
             <span className="font-display font-extrabold text-lg">
               Trade<span className="gradient-text">Board</span>
             </span>
@@ -30,18 +30,26 @@ export default function Login() {
 
           <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
             <div>
-              <label className="text-xs font-medium text-text-muted">Email</label>
+              <label htmlFor="login-email" className="text-xs font-medium text-text-muted">
+                Email
+              </label>
               <input
+                id="login-email"
                 type="email"
                 placeholder="you@example.com"
+                autoComplete="email"
                 className="mt-1.5 w-full bg-bg-elevated border border-tb-border rounded-lg px-3.5 py-2.5 text-sm outline-none focus:border-blue transition-colors"
               />
             </div>
             <div>
-              <label className="text-xs font-medium text-text-muted">Password</label>
+              <label htmlFor="login-password" className="text-xs font-medium text-text-muted">
+                Password
+              </label>
               <input
+                id="login-password"
                 type="password"
                 placeholder="••••••••"
+                autoComplete="current-password"
                 className="mt-1.5 w-full bg-bg-elevated border border-tb-border rounded-lg px-3.5 py-2.5 text-sm outline-none focus:border-blue transition-colors"
               />
             </div>

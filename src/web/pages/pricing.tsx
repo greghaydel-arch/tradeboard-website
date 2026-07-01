@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "motion/react";
-import { Check, X, ArrowRight, Toggle } from "lucide-react";
+import { Check, X, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { Reveal } from "../components/reveal";
 
@@ -84,7 +84,7 @@ export default function Pricing() {
   const [annual, setAnnual] = useState(false);
 
   return (
-    <main className="pt-16">
+    <main id="main-content" className="pt-16">
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue/15 rounded-full blur-[120px] -z-10" />
@@ -122,6 +122,7 @@ export default function Pricing() {
           >
             <button
               onClick={() => setAnnual(false)}
+              aria-pressed={!annual}
               className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
                 !annual ? "bg-blue text-white" : "text-text-muted hover:text-text"
               }`}
@@ -130,6 +131,7 @@ export default function Pricing() {
             </button>
             <button
               onClick={() => setAnnual(true)}
+              aria-pressed={annual}
               className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all flex items-center gap-2 ${
                 annual ? "bg-blue text-white" : "text-text-muted hover:text-text"
               }`}
@@ -219,11 +221,17 @@ export default function Pricing() {
                     {t.features.map((f) => (
                       <li key={f.text} className="flex items-start gap-2.5 text-sm">
                         {f.included ? (
-                          <Check className="text-green mt-0.5 shrink-0" size={16} />
+                          <>
+                            <Check className="text-green mt-0.5 shrink-0" size={16} aria-hidden="true" />
+                            <span className="sr-only">Included: </span>
+                          </>
                         ) : (
-                          <X className="text-text-dim mt-0.5 shrink-0 opacity-40" size={16} />
+                          <>
+                            <X className="text-text-dim mt-0.5 shrink-0" size={16} aria-hidden="true" />
+                            <span className="sr-only">Not included: </span>
+                          </>
                         )}
-                        <span className={f.included ? "text-text-muted" : "text-text-dim opacity-50"}>
+                        <span className={f.included ? "text-text-muted" : "text-text-dim"}>
                           {f.text}
                         </span>
                       </li>

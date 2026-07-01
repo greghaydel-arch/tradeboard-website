@@ -30,9 +30,16 @@ export function Nav() {
           : "bg-bg/85 backdrop-blur-md"
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+      <nav
+        aria-label="Main navigation"
+        className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between"
+      >
         <Link to="/" className="flex items-center gap-2.5 group">
-          <img src="/logo-candlestick.png" alt="TradeBoard" className="w-8 h-8" />
+          <img
+            src="/logo-candlestick.png"
+            alt="TradeBoard — go to home page"
+            className="w-8 h-8"
+          />
           <span className="font-display font-extrabold text-lg tracking-tight">
             Trade<span className="gradient-text">Board</span>
           </span>
@@ -43,6 +50,7 @@ export function Nav() {
             <Link
               key={l.to}
               to={l.to}
+              aria-current={location === l.to ? "page" : undefined}
               className={`px-4 py-2 text-sm rounded-lg transition-colors ${
                 location === l.to
                   ? "text-text"
@@ -72,19 +80,25 @@ export function Nav() {
         <button
           className="md:hidden text-text"
           onClick={() => setOpen(!open)}
-          aria-label="Menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </button>
       </nav>
 
       {open && (
-        <div className="md:hidden bg-bg border-b border-tb-border px-5 py-4 flex flex-col gap-1">
+        <div
+          id="mobile-menu"
+          className="md:hidden bg-bg border-b border-tb-border px-5 py-4 flex flex-col gap-1"
+        >
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               onClick={() => setOpen(false)}
+              aria-current={location === l.to ? "page" : undefined}
               className="px-3 py-2.5 text-sm text-text-muted hover:text-text rounded-lg"
             >
               {l.label}
