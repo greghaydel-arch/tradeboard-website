@@ -1,8 +1,26 @@
 import { Link } from "wouter";
 import { motion } from "motion/react";
-import { Check, X, ArrowRight } from "lucide-react";
+import { Check, X, ArrowRight, Zap } from "lucide-react";
 import { useState } from "react";
 import { Reveal } from "../components/reveal";
+
+const founderFeaturesPro = [
+  { text: "Unlimited trade history", included: true },
+  { text: "All 20+ analytics dashboards", included: true },
+  { text: "Multi-broker support", included: true },
+  { text: "Psychology & mood tracking", included: true },
+  { text: "Trade Replay (daily candles)", included: true },
+  { text: "Trade tagging & unlimited playbooks", included: true },
+  { text: "Correlation analysis", included: true },
+  { text: "Monthly & weekly summaries", included: true },
+  { text: "Windows desktop + full mobile apps", included: true },
+  { text: "Full education hub", included: true },
+  { text: "Unlimited export (CSV & PDF)", included: true },
+  { text: "Screenshot attachments — cloud storage (unlimited)", included: true },
+  { text: "AI Trade Coach — GPT-4o (150 queries/mo)", included: true },
+  { text: "Stock backtesting", included: false },
+  { text: "Tax report + wash sale flagging", included: false },
+];
 
 const tiers = [
   {
@@ -31,6 +49,19 @@ const tiers = [
     ],
   },
   {
+    name: "Founder Pro",
+    monthly: null,
+    annual: "$199",
+    annualMonthly: "$17",
+    cadence: "/yr",
+    tagline: "Lock in Pro at $199/yr — forever. First 100 only.",
+    cta: "Join the First 100",
+    highlight: true,
+    badge: "Founder",
+    annualOnly: true,
+    features: founderFeaturesPro,
+  },
+  {
     name: "Pro",
     monthly: "$29",
     annual: "$278",
@@ -38,7 +69,7 @@ const tiers = [
     cadence: "/mo",
     tagline: "The full toolkit for serious traders.",
     cta: "Go Pro",
-    highlight: true,
+    highlight: false,
     features: [
       { text: "Unlimited trade history", included: true },
       { text: "All 20+ analytics dashboards", included: true },
@@ -80,8 +111,49 @@ const tiers = [
   },
 ];
 
+const faq = [
+  {
+    q: "Is the free plan really free forever?",
+    a: "Yes. No timer, no credit card. The free plan is your permanent starting point — keep it as long as you like. You'll just hit limits on history, dashboards, and features.",
+  },
+  {
+    q: "What does 'Founder Pro' mean?",
+    a: "The first 100 subscribers get Pro at $199/yr — locked in for life as long as your subscription stays active. That's 28% off the regular annual price, forever. After the first 100 spots are filled, this offer goes away permanently.",
+  },
+  {
+    q: "What happens if I cancel my Founder Pro plan?",
+    a: "Your Founder rate is yours as long as your subscription stays active. If you cancel and come back later, the Founder rate is no longer available. This keeps the offer exclusive to the first 100 who commit.",
+  },
+  {
+    q: "What exactly does 'limited' mean on Free?",
+    a: "45 days of trade history (Pro gets unlimited), 6 charts instead of 20+, no psychology tracking, no trade replay, no export, and 1 broker. You can see what you're missing on each card above.",
+  },
+  {
+    q: "Which brokers do you support?",
+    a: "Webull and Robinhood connect directly. You can also import a CSV from virtually any broker. More direct integrations are on the way.",
+  },
+  {
+    q: "Do I get the mobile app on the free plan?",
+    a: "Yes. The mobile app is available on every plan — free users get basic charts, Pro and Pro+ unlock the full experience.",
+  },
+  {
+    q: "Can I cancel anytime?",
+    a: "Absolutely. Upgrade, downgrade, or cancel whenever you want. No contracts, no lock-ins.",
+  },
+];
+
+const competitors = [
+  { name: "TradeBoard (Pro)", monthly: "$29", annual: "$278", free: "Yes", replay: "Daily", psych: "Yes", broker: "Multiple", ai: "50/mo" },
+  { name: "TradeBoard (Founder Pro)", monthly: "—", annual: "$199", free: "Yes", replay: "Daily", psych: "Yes", broker: "Multiple", ai: "150/mo" },
+  { name: "TraderSync Pro", monthly: "$29.95", annual: "$312.60", free: "Trial only", replay: "Premium tier", psych: "No", broker: "5 accounts", ai: "~150/mo" },
+  { name: "TradeZella Essential", monthly: "$35", annual: "$288", free: "No", replay: "Pro tier", psych: "Basic", broker: "1", ai: "500/mo" },
+  { name: "Tradervue Silver", monthly: "$29.95", annual: "$359.40", free: "30 trades/mo", replay: "No", psych: "No", broker: "1", ai: "No" },
+  { name: "TradesViz Pro", monthly: "$19.99", annual: "$179.88", free: "Basic", replay: "Platinum tier", psych: "Limited", broker: "Multiple", ai: "Platinum only" },
+];
+
 export default function Pricing() {
-  const [annual, setAnnual] = useState(false);
+  const [annual, setAnnual] = useState(true);
+  const [spotsLeft] = useState(93);
 
   return (
     <main id="main-content" className="pt-16">
@@ -113,7 +185,6 @@ export default function Pricing() {
             Start free, forever. Upgrade when you want more. No trial timers, no surprises.
           </motion.p>
 
-          {/* Billing toggle */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -148,24 +219,30 @@ export default function Pricing() {
               animate={{ opacity: 1, y: 0 }}
               className="text-xs text-text-dim mt-2"
             >
-              Billed annually — Pro saves $58/yr · Pro+ saves $118/yr
+              Billed annually — Founder Pro $199/yr · Pro saves $58/yr · Pro+ saves $118/yr
             </motion.p>
           )}
         </div>
       </section>
 
       <section className="max-w-6xl mx-auto px-5 py-10">
-        <div className="grid md:grid-cols-3 gap-6 items-start">
+        <div className="grid md:grid-cols-4 gap-6 items-start">
           {tiers.map((t, i) => {
+            if (t.annualOnly && !annual) return null;
+
             const displayPrice =
               t.name === "Free"
                 ? t.monthly
+                : t.annualOnly
+                ? t.annual
                 : annual
                 ? `${t.annualMonthly}`
                 : t.monthly;
             const subLabel =
               t.name === "Free"
                 ? "forever"
+                : t.annualOnly
+                ? "/yr"
                 : annual
                 ? "/mo, billed annually"
                 : "/mo";
@@ -174,7 +251,9 @@ export default function Pricing() {
               <Reveal key={t.name} delay={i * 0.1}>
                 <div
                   className={`relative rounded-2xl p-7 h-full flex flex-col ${
-                    t.highlight
+                    t.highlight && !t.annualOnly
+                      ? "bg-bg-elevated border-2 border-transparent"
+                      : t.annualOnly
                       ? "bg-bg-elevated border-2 border-transparent"
                       : "bg-bg-card border border-tb-border"
                   }`}
@@ -182,34 +261,62 @@ export default function Pricing() {
                     t.highlight
                       ? {
                           backgroundImage:
-                            "linear-gradient(#161c2d, #161c2d), linear-gradient(135deg, #2563eb, #06b6d4)",
+                            "linear-gradient(#161c2d, #161c2d), linear-gradient(135deg, #f59e0b, #d97706)",
                           backgroundOrigin: "border-box",
                           backgroundClip: "padding-box, border-box",
                         }
                       : undefined
                   }
                 >
-                  {t.highlight && (
+                  {t.badge && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-black text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                      <Zap size={12} />
+                      {t.badge}
+                    </span>
+                  )}
+                  {t.highlight && !t.badge && (
                     <span className="absolute -top-3 left-1/2 -translate-x-1/2 gradient-btn text-white text-xs font-semibold px-3 py-1 rounded-full">
                       Most Popular
                     </span>
                   )}
+
                   <h3 className="font-display font-bold text-xl">{t.name}</h3>
                   <p className="text-sm text-text-muted mt-1 min-h-[2.5rem]">{t.tagline}</p>
+
                   <div className="mt-4 flex items-end gap-1">
                     <span className="font-display font-extrabold text-4xl">{displayPrice}</span>
                     <span className="text-text-dim text-xs mb-2">{subLabel}</span>
                   </div>
-                  {annual && t.name !== "Free" && (
-                    <p className="text-xs text-gold mt-0.5">
-                      ${t.annual}/yr — 2 months free
+
+                  {t.annualOnly && (
+                    <p className="text-xs mt-0.5">
+                      <span className="line-through text-text-dim/60">$278/yr</span>{" "}
+                      <span className="text-gold font-semibold">Save $79/yr</span>
                     </p>
+                  )}
+
+                  {annual && t.name === "Pro" && (
+                    <p className="text-xs text-gold mt-0.5">$278/yr — 2 months free</p>
+                  )}
+                  {annual && t.name === "Pro+" && (
+                    <p className="text-xs text-gold mt-0.5">$470/yr — 2 months free</p>
+                  )}
+
+                  {t.annualOnly && (
+                    <div className="mt-3 bg-gold/10 border border-gold/30 rounded-lg px-3 py-2 text-center">
+                      <p className="text-xs font-bold text-gold">
+                        {spotsLeft} of 100 spots remaining
+                      </p>
+                      <p className="text-[10px] text-text-dim mt-0.5">Locked in for life</p>
+                    </div>
                   )}
 
                   <Link
                     to="/login"
                     className={`mt-6 text-center font-semibold px-5 py-3 rounded-lg transition-all ${
-                      t.highlight
+                      t.annualOnly
+                        ? "bg-gold text-black hover:bg-gold/90"
+                        : t.highlight
                         ? "gradient-btn text-white"
                         : "border border-tb-border hover:border-text-dim text-text"
                     }`}
@@ -245,39 +352,86 @@ export default function Pricing() {
 
         <Reveal delay={0.2} className="text-center mt-10">
           <p className="text-sm text-text-dim">
-            Mobile app included on every plan · Annual billing available at launch
+            Mobile app included on every plan · Founder Pro is annual-only, locked for life
           </p>
         </Reveal>
       </section>
 
-      {/* FAQ */}
+      <section className="max-w-5xl mx-auto px-5 py-16">
+        <Reveal className="text-center mb-10">
+          <h2 className="font-display font-extrabold text-3xl">
+            How we <span className="gradient-text">compare</span>
+          </h2>
+          <p className="text-text-muted mt-3 text-sm">
+            TradeBoard vs the competition — based on published prices as of{" "}
+            <span className="text-text font-semibold">July 12, 2026</span>.
+            Competitor prices verified via their public pricing pages.{" "}
+            <span className="text-text-dim">Prices subject to change. Always verify directly.</span>
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm" aria-label="TradeBoard vs competitor pricing comparison">
+              <thead>
+                <tr className="border-b border-tb-border">
+                  <th scope="col" className="text-left px-4 py-3 text-text-muted font-semibold whitespace-nowrap">Plan</th>
+                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">Monthly</th>
+                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">Annual</th>
+                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">Free Tier</th>
+                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">Replay</th>
+                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">Psychology</th>
+                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">Multi-Broker</th>
+                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">AI Coach</th>
+                </tr>
+              </thead>
+              <tbody>
+                {competitors.map((row, i) => {
+                  const isTB = row.name.startsWith("TradeBoard");
+                  return (
+                    <tr
+                      key={row.name}
+                      className={`border-b border-tb-border last:border-0 ${
+                        isTB ? "bg-gold/5" : ""
+                      }`}
+                    >
+                      <td className={`px-4 py-3.5 font-semibold whitespace-nowrap ${
+                        isTB ? "text-gold" : "text-text"
+                      }`}>
+                        {row.name}
+                      </td>
+                      <td className="px-4 py-3.5 text-center text-text-muted">{row.monthly}</td>
+                      <td className="px-4 py-3.5 text-center font-semibold">
+                        {row.annual}
+                        {isTB && row.name.includes("Founder") && (
+                          <span className="block text-[10px] text-gold">locked for life</span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3.5 text-center text-text-muted text-xs">{row.free}</td>
+                      <td className="px-4 py-3.5 text-center text-text-muted text-xs">{row.replay}</td>
+                      <td className="px-4 py-3.5 text-center text-text-muted text-xs">{row.psych}</td>
+                      <td className="px-4 py-3.5 text-center text-text-muted text-xs">{row.broker}</td>
+                      <td className="px-4 py-3.5 text-center text-text-muted text-xs">{row.ai}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-[10px] text-text-dim mt-3 text-center">
+            Competitor prices sourced from their public pricing pages as of July 12, 2026.
+            Prices, features, and tiers change frequently — verify directly before making a decision.
+            TradeBoard pricing and features are subject to change. Not financial advice.
+          </p>
+        </Reveal>
+      </section>
+
       <section className="max-w-3xl mx-auto px-5 py-16">
         <Reveal className="text-center mb-10">
           <h2 className="font-display font-extrabold text-3xl">Questions, answered</h2>
         </Reveal>
         <div className="space-y-4">
-          {[
-            {
-              q: "Is the free plan really free forever?",
-              a: "Yes. No timer, no credit card. The free plan is your permanent starting point — keep it as long as you like. You'll just hit limits on history, dashboards, and features.",
-            },
-            {
-              q: "What exactly does 'limited' mean on Free?",
-              a: "45 days of trade history (Pro gets unlimited), 6 charts instead of 20+, no psychology tracking, no trade replay, no export, and 1 broker. You can see what you're missing on each card above.",
-            },
-            {
-              q: "Which brokers do you support?",
-              a: "Webull and Robinhood connect directly. You can also import a CSV from virtually any broker. More direct integrations are on the way.",
-            },
-            {
-              q: "Do I get the mobile app on the free plan?",
-              a: "Yes. The mobile app is available on every plan — free users get basic charts, Pro and Pro+ unlock the full experience.",
-            },
-            {
-              q: "Can I cancel anytime?",
-              a: "Absolutely. Upgrade, downgrade, or cancel whenever you want. No contracts, no lock-ins.",
-            },
-          ].map((item, i) => (
+          {faq.map((item, i) => (
             <Reveal key={item.q} delay={i * 0.06}>
               <div className="bg-bg-card border border-tb-border rounded-xl p-5">
                 <h3 className="font-semibold text-text">{item.q}</h3>

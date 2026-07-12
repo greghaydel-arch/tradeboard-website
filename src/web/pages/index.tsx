@@ -8,6 +8,7 @@ import {
   ArrowRight,
   TrendingUp,
   Check,
+  Zap,
 } from "lucide-react";
 import { Reveal } from "../components/reveal";
 
@@ -47,7 +48,6 @@ const stats = [
 export default function Index() {
   return (
     <main id="main-content" className="pt-16">
-      {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-40" />
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue/20 rounded-full blur-[120px] -z-10" />
@@ -124,9 +124,9 @@ export default function Index() {
                 transition={{ duration: 0.7, delay: 0.42 }}
                 className="mt-5 inline-flex items-center gap-2 bg-gold/10 border border-gold/30 rounded-full px-4 py-2 text-xs font-semibold text-gold"
               >
-                🔥{" "}
+                <Zap size={14} />
                 <Link to="/pricing" className="hover:underline">
-                  Founding Member pricing — locked for your first year, first 100 subscribers only
+                  Founding Member pricing — $199/yr for life. First 100 only.
                 </Link>
               </motion.div>
             </div>
@@ -146,7 +146,6 @@ export default function Index() {
             </motion.div>
           </div>
 
-          {/* Stats */}
           <Reveal delay={0.2} className="mt-20 grid grid-cols-3 gap-4 max-w-2xl">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
@@ -160,7 +159,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Feature teasers */}
       <section className="max-w-6xl mx-auto px-5 py-24">
         <Reveal className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-cyan text-sm font-semibold uppercase tracking-wider">
@@ -199,7 +197,6 @@ export default function Index() {
         </Reveal>
       </section>
 
-      {/* CTA band */}
       <section className="max-w-6xl mx-auto px-5">
         <Reveal>
           <div className="relative overflow-hidden rounded-2xl border border-tb-border bg-bg-elevated p-10 md:p-16 text-center">

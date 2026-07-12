@@ -13,6 +13,7 @@ import {
   ArrowRight,
   Check,
   X,
+  Zap,
 } from "lucide-react";
 import { Reveal } from "../components/reveal";
 
@@ -157,7 +158,6 @@ const comparison = [
 export default function Features() {
   return (
     <main id="main-content" className="pt-16">
-      {/* Header */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="absolute top-0 right-1/3 w-[500px] h-[500px] bg-cyan/15 rounded-full blur-[120px] -z-10" />
@@ -186,10 +186,21 @@ export default function Features() {
             TradeBoard isn't just a logbook. It's a system for understanding your trades,
             your patterns, and yourself.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.24 }}
+            className="mt-8 inline-flex items-center gap-2 bg-gold/10 border border-gold/30 rounded-full px-4 py-2 text-xs font-semibold text-gold"
+          >
+            <Zap size={14} />
+            <Link to="/pricing" className="hover:underline">
+              Founder pricing available — lock in Pro at $199/yr for life. First 100 subscribers only.
+            </Link>
+          </motion.div>
         </div>
       </section>
 
-      {/* Feature blocks */}
       <section className="max-w-6xl mx-auto px-5 py-12 space-y-28">
         {featureBlocks.map((f, i) => (
           <div
@@ -234,7 +245,6 @@ export default function Features() {
         ))}
       </section>
 
-      {/* Comparison table */}
       <section className="max-w-3xl mx-auto px-5 py-12">
         <Reveal className="text-center mb-10">
           <h2 className="font-display font-extrabold text-3xl">
@@ -291,7 +301,6 @@ export default function Features() {
         </Reveal>
       </section>
 
-      {/* CTA */}
       <section className="max-w-6xl mx-auto px-5 pb-24">
         <Reveal>
           <div className="relative overflow-hidden rounded-2xl border border-tb-border bg-bg-elevated p-10 md:p-14 text-center">
