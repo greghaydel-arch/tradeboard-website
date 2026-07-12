@@ -228,8 +228,6 @@ export default function Pricing() {
       <section className="max-w-6xl mx-auto px-5 py-10">
         <div className="grid md:grid-cols-4 gap-6 items-start">
           {tiers.map((t, i) => {
-            if (t.annualOnly && !annual) return null;
-
             const displayPrice =
               t.name === "Free"
                 ? t.monthly
@@ -289,10 +287,17 @@ export default function Pricing() {
                   </div>
 
                   {t.annualOnly && (
-                    <p className="text-xs mt-0.5">
-                      <span className="line-through text-text-dim/60">$278/yr</span>{" "}
-                      <span className="text-gold font-semibold">Save $79/yr</span>
-                    </p>
+                    <>
+                      <p className="text-xs mt-0.5">
+                        <span className="line-through text-text-dim/60">$278/yr</span>{" "}
+                        <span className="text-gold font-semibold">Save $79/yr</span>
+                      </p>
+                      {!annual && (
+                        <p className="text-[10px] text-gold font-semibold mt-1">
+                          Annual only — switch to Annual to subscribe
+                        </p>
+                      )}
+                    </>
                   )}
 
                   {annual && t.name === "Pro" && (
@@ -323,6 +328,12 @@ export default function Pricing() {
                   >
                     {t.cta}
                   </Link>
+
+                  {t.annualOnly && !annual && (
+                    <p className="text-[10px] text-text-dim mt-2 text-center">
+                      Switch to Annual billing above to purchase
+                    </p>
+                  )}
 
                   <ul className="mt-7 space-y-3 flex-1">
                     {t.features.map((f) => (
