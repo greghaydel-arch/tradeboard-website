@@ -161,7 +161,7 @@ export default function Pricing() {
               t.name === "Free"
                 ? t.monthly
                 : annual
-                ? `$${t.annualMonthly}`
+                ? `${t.annualMonthly}`
                 : t.monthly;
             const subLabel =
               t.name === "Free"

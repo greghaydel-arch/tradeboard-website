@@ -84,8 +84,9 @@ export default function Index() {
                 transition={{ duration: 0.7, delay: 0.15 }}
                 className="mt-6 text-lg text-text-muted max-w-md leading-relaxed"
               >
-                The trading journal that goes deeper. Replay your trades, track your
-                psychology, and find your edge — across every broker, on every device.
+                The only trading journal built to show you <em>why</em> you win or lose — not
+                just that you did. Psychology tracking, Trade Replay, and multi-broker sync,
+                all in one dashboard.
               </motion.p>
 
               <motion.div
@@ -116,6 +117,18 @@ export default function Index() {
               >
                 <Check size={14} className="text-green" /> Free forever plan · No credit card required
               </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.42 }}
+                className="mt-5 inline-flex items-center gap-2 bg-gold/10 border border-gold/30 rounded-full px-4 py-2 text-xs font-semibold text-gold"
+              >
+                🔥{" "}
+                <Link to="/pricing" className="hover:underline">
+                  Founding Member pricing — locked for your first year, first 100 subscribers only
+                </Link>
+              </motion.div>
             </div>
 
             <motion.div
