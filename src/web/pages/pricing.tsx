@@ -83,7 +83,7 @@ const tiers = [
       { text: "Full education hub", included: true },
       { text: "Unlimited export (CSV & PDF)", included: true },
       { text: "Screenshot attachments — cloud storage (unlimited)", included: true },
-      { text: "AI Trade Coach — GPT-3.5 (50 queries/mo)", included: true },
+      { text: "AI Trade Coach — GPT-4o (150 queries/mo)", included: true },
       { text: "Stock backtesting", included: false },
       { text: "Tax report + wash sale flagging", included: false },
     ],
@@ -99,7 +99,7 @@ const tiers = [
     highlight: false,
     features: [
       { text: "Everything in Pro", included: true },
-      { text: "AI Trade Coach — GPT-4o (unlimited queries)", included: true },
+      { text: "AI Trade Coach — GPT-4o (500 queries/mo)", included: true },
       { text: "Stock backtesting", included: true },
       { text: "Intraday trade replay", included: true },
       { text: "Advanced correlation analysis", included: true },
@@ -143,7 +143,7 @@ const faq = [
 ];
 
 const competitors = [
-  { name: "TradeBoard (Pro)", monthly: "$29", annual: "$278", free: "Yes", replay: "Daily", psych: "Yes", broker: "Multiple", ai: "50/mo" },
+  { name: "TradeBoard (Pro)", monthly: "$29", annual: "$278", free: "Yes", replay: "Daily", psych: "Yes", broker: "Multiple", ai: "150/mo" },
   { name: "TradeBoard (Founder Pro)", monthly: "—", annual: "$199", free: "Yes", replay: "Daily", psych: "Yes", broker: "Multiple", ai: "150/mo" },
   { name: "TraderSync Pro", monthly: "$29.95", annual: "$312.60", free: "Trial only", replay: "Premium tier", psych: "No", broker: "5 accounts", ai: "~150/mo" },
   { name: "TradeZella Essential", monthly: "$35", annual: "$288", free: "No", replay: "Pro tier", psych: "Basic", broker: "1", ai: "500/mo" },
