@@ -52,8 +52,25 @@ const chartBars = [40, 55, 30, 60, 80, 25, 70, 90, 45, 65, 85, 35, 75, 95];
 export default function Index() {
   return (
     <main id="main-content" className="pt-16">
-      {/* Font import */}
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');`}</style>
+      {/* Font + Animations */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        .animate-shimmer {
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+          background-size: 200% 100%;
+          animation: shimmer 3s ease-in-out infinite;
+          pointer-events: none;
+        }
+      `}</style>
 
       {/* Hero */}
       <section className="relative overflow-hidden">
@@ -128,11 +145,12 @@ export default function Index() {
                 <Check size={14} className="text-green" /> Free forever plan · No credit card required
               </motion.p>
 
+              {/* Founding Member banner — FLOATING */}
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.42 }}
-                className="mt-5 inline-flex items-center gap-2 bg-gold/10 border border-gold/30 rounded-full px-4 py-2 text-xs font-semibold text-gold"
+                className="mt-5 inline-flex items-center gap-2 bg-gold/10 border border-gold/30 rounded-full px-4 py-2 text-xs font-semibold text-gold animate-float"
               >
                 <Zap size={14} />
                 <Link to="/pricing" className="hover:underline">
@@ -190,7 +208,7 @@ export default function Index() {
                   </div>
                 </div>
 
-                {/* Chart bars */}
+                {/* Chart bars — animated */}
                 <div className="px-5 pb-3">
                   <div className="flex items-center justify-between mb-2">
                     <p className="text-[11px] font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>P&L Trend — Last 30 Days</p>
@@ -236,6 +254,9 @@ export default function Index() {
                     </div>
                   </div>
                 </div>
+
+                {/* Shimmer overlay */}
+                <div className="absolute inset-0 animate-shimmer" />
               </div>
             </motion.div>
           </div>
