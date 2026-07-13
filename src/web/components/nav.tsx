@@ -36,9 +36,9 @@ export function Nav() {
       >
         <Link to="/" className="flex items-center gap-2.5 group">
           <img
-            src="/logo-candlestick.png"
+            src="/tradeboard_icon_final.png"
             alt="TradeBoard — go to home page"
-            className="w-8 h-8"
+            className="w-8 h-8 rounded-lg group-hover:scale-110 transition-transform"
           />
           <span className="font-display font-extrabold text-lg tracking-tight">
             Trade<span className="gradient-text">Board</span>
