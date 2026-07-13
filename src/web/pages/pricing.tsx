@@ -247,7 +247,9 @@ export default function Pricing() {
 
             return (
               <Reveal key={t.name} delay={i * 0.1}>
-                <div
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   className={`relative rounded-2xl p-7 h-full flex flex-col ${
                     t.highlight && !t.annualOnly
                       ? "bg-bg-elevated border-2 border-transparent"
@@ -355,7 +357,7 @@ export default function Pricing() {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               </Reveal>
             );
           })}
