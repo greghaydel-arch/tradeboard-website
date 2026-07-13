@@ -9,6 +9,8 @@ import {
   TrendingUp,
   Check,
   Zap,
+  TrendingDown,
+  Pencil,
 } from "lucide-react";
 import { Reveal } from "../components/reveal";
 
@@ -45,12 +47,18 @@ const stats = [
   { value: "100%", label: "Your data, your control" },
 ];
 
+const chartBars = [40, 55, 30, 60, 80, 25, 70, 90, 45, 65, 85, 35, 75, 95];
+
 export default function Index() {
   return (
     <main id="main-content" className="pt-16">
+      {/* Font import */}
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');`}</style>
+
+      {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-40" />
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue/20 rounded-full blur-[120px] -z-10" />
+        <div className="absolute top-0 left-1/4 w-[700px] h-[700px] bg-blue/20 rounded-full blur-[150px] -z-10" />
         <div className="absolute top-40 right-1/4 w-[500px] h-[500px] bg-cyan/15 rounded-full blur-[120px] -z-10" />
 
         <div className="max-w-6xl mx-auto px-5 pt-20 pb-24 relative">
@@ -70,23 +78,25 @@ export default function Index() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.05 }}
-                className="font-display font-extrabold leading-[1.05] tracking-tight"
-                style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+                className="font-bold leading-[1.1] tracking-tight"
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                }}
               >
-                Trade Smarter,
+                Your Trades Tell Everything.
                 <br />
-                <span className="gradient-text">Not Harder.</span>
+                <span className="gradient-text">Start Listening.</span>
               </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15 }}
-                className="mt-6 text-lg text-text-muted max-w-md leading-relaxed"
+                className="mt-6 text-base md:text-lg text-text-muted max-w-md leading-relaxed"
               >
-                The only trading journal built to show you <em>why</em> you win or lose — not
-                just that you did. Psychology tracking, Trade Replay, and multi-broker sync,
-                all in one dashboard.
+                Psychology tracking. Trade Replay. Multi-broker — all in one dashboard.
+                The only journal built to show you <em>why</em> you win or lose.
               </motion.p>
 
               <motion.div
@@ -131,21 +141,106 @@ export default function Index() {
               </motion.div>
             </div>
 
+            {/* RIGHT: Animated Dashboard Mockup */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="relative"
             >
-              <div className="absolute inset-0 gradient-btn rounded-2xl blur-2xl opacity-20" />
-              <img
-                src="/hero-dashboard.png"
-                alt="TradeBoard dashboard"
-                className="relative rounded-2xl border border-tb-border shadow-2xl w-full"
-              />
+              <div className="absolute inset-0 gradient-btn rounded-2xl blur-3xl opacity-15" />
+              <div className="relative bg-[#0f1729] border border-blue/20 rounded-2xl overflow-hidden shadow-2xl">
+                {/* Mockup header */}
+                <div className="flex items-center justify-between px-5 py-3 border-b border-tb-border/50">
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red/60" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow/60" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-green/60" />
+                    </div>
+                    <span className="text-[11px] text-text-dim">TradeBoard Dashboard</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-green animate-pulse" />
+                    <span className="text-[10px] text-text-dim">Live</span>
+                  </div>
+                </div>
+
+                {/* Stat cards */}
+                <div className="grid grid-cols-3 gap-3 p-5">
+                  <div className="bg-bg-card/80 border border-tb-border rounded-xl p-3">
+                    <p className="text-[10px] text-text-dim uppercase tracking-wider font-semibold">Total P&L</p>
+                    <p className="text-xl font-bold text-green" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>+$12,847</p>
+                    <div className="flex items-center gap-1 mt-0.5">
+                      <span className="text-[10px] text-green/70">↑ 14.2%</span>
+                      <span className="text-[10px] text-text-dim">this month</span>
+                    </div>
+                  </div>
+                  <div className="bg-bg-card/80 border border-tb-border rounded-xl p-3">
+                    <p className="text-[10px] text-text-dim uppercase tracking-wider font-semibold">Win Rate</p>
+                    <p className="text-xl font-bold text-cyan" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>68.4%</p>
+                    <div className="w-full bg-bg-elevated rounded-full h-1.5 mt-1.5">
+                      <div className="bg-gradient-to-r from-cyan to-blue h-1.5 rounded-full" style={{ width: "68%" }} />
+                    </div>
+                  </div>
+                  <div className="bg-bg-card/80 border border-tb-border rounded-xl p-3">
+                    <p className="text-[10px] text-text-dim uppercase tracking-wider font-semibold">Best Trade</p>
+                    <p className="text-xl font-bold text-gold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>+$2,340</p>
+                    <p className="text-[10px] text-text-dim">NVDA · 5 days ago</p>
+                  </div>
+                </div>
+
+                {/* Chart bars */}
+                <div className="px-5 pb-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-[11px] font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>P&L Trend — Last 30 Days</p>
+                    <div className="flex items-center gap-3 text-[10px] text-text-dim">
+                      <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green" /> Profit</span>
+                      <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red/60" /> Loss</span>
+                    </div>
+                  </div>
+                  <div className="flex items-end gap-1.5 h-24">
+                    {chartBars.map((h, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ height: 0 }}
+                        animate={{ height: `${h}%` }}
+                        transition={{ duration: 1, delay: 0.6 + i * 0.05, ease: "easeOut" }}
+                        className={`w-full rounded-t-md ${
+                          i % 3 === 2 ? "bg-red/60" : "bg-green/70"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom row */}
+                <div className="grid grid-cols-2 gap-3 p-5 pt-3">
+                  <div className="bg-bg-card/80 border border-tb-border rounded-xl p-3 flex items-center justify-between">
+                    <div>
+                      <p className="text-[10px] text-text-dim uppercase tracking-wider font-semibold">Psychology</p>
+                      <p className="text-lg font-bold text-cyan" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>A-</p>
+                    </div>
+                    <div className="w-10 h-10 rounded-full bg-cyan/10 border border-cyan/20 flex items-center justify-center">
+                      <Pencil size={16} className="text-cyan" />
+                    </div>
+                  </div>
+                  <div className="bg-bg-card/80 border border-tb-border rounded-xl p-3 flex items-center justify-between">
+                    <div>
+                      <p className="text-[10px] text-text-dim uppercase tracking-wider font-semibold">Playbook</p>
+                      <p className="text-lg font-bold text-gold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Momentum</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs font-semibold text-green">72% WR</p>
+                      <p className="text-[10px] text-text-dim">24 trades</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
 
+          {/* Stats */}
           <Reveal delay={0.2} className="mt-20 grid grid-cols-3 gap-4 max-w-2xl">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
@@ -159,6 +254,7 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Feature teasers */}
       <section className="max-w-6xl mx-auto px-5 py-24">
         <Reveal className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-cyan text-sm font-semibold uppercase tracking-wider">
@@ -197,6 +293,7 @@ export default function Index() {
         </Reveal>
       </section>
 
+      {/* CTA band */}
       <section className="max-w-6xl mx-auto px-5">
         <Reveal>
           <div className="relative overflow-hidden rounded-2xl border border-tb-border bg-bg-elevated p-10 md:p-16 text-center">
