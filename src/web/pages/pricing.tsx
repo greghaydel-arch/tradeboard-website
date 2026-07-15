@@ -4,7 +4,7 @@ import { Check, X, ArrowRight, Zap } from "lucide-react";
 import { useState } from "react";
 import { Reveal } from "../components/reveal";
 
-const founderFeaturesPro = [
+const foundingFeaturesPro = [
   { text: "Unlimited trade history", included: true },
   { text: "All 20+ analytics dashboards", included: true },
   { text: "Multi-broker support", included: true },
@@ -17,7 +17,7 @@ const founderFeaturesPro = [
   { text: "Full education hub", included: true },
   { text: "Unlimited export (CSV & PDF)", included: true },
   { text: "Screenshot attachments — cloud storage (unlimited)", included: true },
-  { text: "AI Trade Coach — GPT-4o (150 queries/mo)", included: true },
+  { text: "AI Trade Coach — GPT-4o (300 queries/mo)", included: true },
   { text: "Stock backtesting", included: false },
   { text: "Tax report + wash sale flagging", included: false },
 ];
@@ -49,17 +49,17 @@ const tiers = [
     ],
   },
   {
-    name: "Founder Pro",
+    name: "Founding Member",
     monthly: null,
     annual: "$199",
     annualMonthly: "$17",
     cadence: "/yr",
-    tagline: "Lock in Pro at $199/yr — forever. First 100 only.",
+    tagline: "Lock in Pro at $199/yr — forever. First 100 spots available.",
     cta: "Join the First 100",
     highlight: true,
-    badge: "Founder",
+    badge: "Founding Member",
     annualOnly: true,
-    features: founderFeaturesPro,
+    features: foundingFeaturesPro,
   },
   {
     name: "Pro",
@@ -83,7 +83,7 @@ const tiers = [
       { text: "Full education hub", included: true },
       { text: "Unlimited export (CSV & PDF)", included: true },
       { text: "Screenshot attachments — cloud storage (unlimited)", included: true },
-      { text: "AI Trade Coach — GPT-4o (150 queries/mo)", included: true },
+      { text: "AI Trade Coach — GPT-4o (300 queries/mo)", included: true },
       { text: "Stock backtesting", included: false },
       { text: "Tax report + wash sale flagging", included: false },
     ],
@@ -99,7 +99,7 @@ const tiers = [
     highlight: false,
     features: [
       { text: "Everything in Pro", included: true },
-      { text: "AI Trade Coach — GPT-4o (500 queries/mo)", included: true },
+      { text: "AI Trade Coach — GPT-4o (1,000 queries/mo)", included: true },
       { text: "Stock backtesting", included: true },
       { text: "Intraday trade replay", included: true },
       { text: "Advanced correlation analysis", included: true },
@@ -117,12 +117,12 @@ const faq = [
     a: "Yes. No timer, no credit card. The free plan is your permanent starting point — keep it as long as you like. You'll just hit limits on history, dashboards, and features.",
   },
   {
-    q: "What does 'Founder Pro' mean?",
+    q: "What does 'Founding Member' mean?",
     a: "The first 100 subscribers get Pro at $199/yr — locked in for life as long as your subscription stays active. That's 28% off the regular annual price, forever. After the first 100 spots are filled, this offer goes away permanently.",
   },
   {
-    q: "What happens if I cancel my Founder Pro plan?",
-    a: "Your Founder rate is yours as long as your subscription stays active. If you cancel and come back later, the Founder rate is no longer available. This keeps the offer exclusive to the first 100 who commit.",
+    q: "What happens if I cancel my Founding Member plan?",
+    a: "Your Founding Member rate is yours as long as your subscription stays active. If you cancel and come back later, the Founding Member rate is no longer available. This keeps the offer exclusive to the first 100 who commit.",
   },
   {
     q: "What exactly does 'limited' mean on Free?",
@@ -143,10 +143,12 @@ const faq = [
 ];
 
 const competitors = [
-  { name: "TradeBoard (Pro)", monthly: "$29", annual: "$278", free: "Yes", replay: "Daily", psych: "Yes", broker: "Multiple", ai: "150/mo" },
-  { name: "TradeBoard (Founder Pro)", monthly: "—", annual: "$199", free: "Yes", replay: "Daily", psych: "Yes", broker: "Multiple", ai: "150/mo" },
+  { name: "TradeBoard (Pro)", monthly: "$29", annual: "$278", free: "Yes", replay: "Daily", psych: "Yes", broker: "Multiple", ai: "300/mo" },
+  { name: "TradeBoard (Founding Member)", monthly: "—", annual: "$199", free: "Yes", replay: "Daily", psych: "Yes", broker: "Multiple", ai: "300/mo" },
   { name: "TraderSync Pro", monthly: "$29.95", annual: "$312.60", free: "Trial only", replay: "Premium tier", psych: "No", broker: "5 accounts", ai: "~150/mo" },
-  { name: "TradeZella Essential", monthly: "$35", annual: "$288", free: "No", replay: "Pro tier", psych: "Basic", broker: "1", ai: "500/mo" },
+  { name: "TradeZella Essential", monthly: "$35", annual: "$315", free: "No", replay: "Daily", psych: "Basic", broker: "1", ai: "500/mo" },
+  { name: "TradeZella Pro", monthly: "$59", annual: "$531", free: "No", replay: "Intraday", psych: "Full", broker: "Multi", ai: "1,000/mo" },
+  { name: "TradeZella Ultra", monthly: "$99", annual: "$891", free: "No", replay: "Tick-level", psych: "Advanced", broker: "Unlimited", ai: "2,000/mo" },
   { name: "Tradervue Silver", monthly: "$29.95", annual: "$359.40", free: "30 trades/mo", replay: "No", psych: "No", broker: "1", ai: "No" },
   { name: "TradesViz Pro", monthly: "$19.99", annual: "$179.88", free: "Basic", replay: "Platinum tier", psych: "Limited", broker: "Multiple", ai: "Platinum only" },
 ];
@@ -194,18 +196,14 @@ export default function Pricing() {
             <button
               onClick={() => setAnnual(false)}
               aria-pressed={!annual}
-              className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
-                !annual ? "bg-blue text-white" : "text-text-muted hover:text-text"
-              }`}
+              className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${!annual ? "bg-blue text-white" : "text-text-muted hover:text-text"}`}
             >
               Monthly
             </button>
             <button
               onClick={() => setAnnual(true)}
               aria-pressed={annual}
-              className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all flex items-center gap-2 ${
-                annual ? "bg-blue text-white" : "text-text-muted hover:text-text"
-              }`}
+              className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all flex items-center gap-2 ${annual ? "bg-blue text-white" : "text-text-muted hover:text-text"}`}
             >
               Annual
               <span className="bg-gold/20 text-gold text-xs font-bold px-2 py-0.5 rounded-full">
@@ -219,7 +217,7 @@ export default function Pricing() {
               animate={{ opacity: 1, y: 0 }}
               className="text-xs text-text-dim mt-2"
             >
-              Billed annually — Founder Pro $199/yr · Pro saves $58/yr · Pro+ saves $118/yr
+              Billed annually — Founding Member $199/yr · Pro saves $58/yr · Pro+ saves $118/yr
             </motion.p>
           )}
         </div>
@@ -250,23 +248,8 @@ export default function Pricing() {
                 <motion.div
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className={`relative rounded-2xl p-7 h-full flex flex-col ${
-                    t.highlight && !t.annualOnly
-                      ? "bg-bg-elevated border-2 border-transparent"
-                      : t.annualOnly
-                      ? "bg-bg-elevated border-2 border-transparent"
-                      : "bg-bg-card border border-tb-border"
-                  }`}
-                  style={
-                    t.highlight
-                      ? {
-                          backgroundImage:
-                            "linear-gradient(#161c2d, #161c2d), linear-gradient(135deg, #f59e0b, #d97706)",
-                          backgroundOrigin: "border-box",
-                          backgroundClip: "padding-box, border-box",
-                        }
-                      : undefined
-                  }
+                  className={`relative rounded-2xl p-7 h-full flex flex-col ${t.highlight && !t.annualOnly ? "bg-bg-elevated border-2 border-transparent" : t.annualOnly ? "bg-bg-elevated border-2 border-transparent" : "bg-bg-card border border-tb-border"}`}
+                  style={t.highlight ? { backgroundImage: "linear-gradient(#161c2d, #161c2d), linear-gradient(135deg, #f59e0b, #d97706)", backgroundOrigin: "border-box", backgroundClip: "padding-box, border-box" } : undefined}
                 >
                   {t.badge && (
                     <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-black text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
@@ -320,13 +303,7 @@ export default function Pricing() {
 
                   <Link
                     to="/login"
-                    className={`mt-6 text-center font-semibold px-5 py-3 rounded-lg transition-all ${
-                      t.annualOnly
-                        ? "bg-gold text-black hover:bg-gold/90"
-                        : t.highlight
-                        ? "gradient-btn text-white"
-                        : "border border-tb-border hover:border-text-dim text-text"
-                    }`}
+                    className={`mt-6 text-center font-semibold px-5 py-3 rounded-lg transition-all ${t.annualOnly ? "bg-gold text-black hover:bg-gold/90" : t.highlight ? "gradient-btn text-white" : "border border-tb-border hover:border-text-dim text-text"}`}
                   >
                     {t.cta}
                   </Link>
@@ -351,9 +328,7 @@ export default function Pricing() {
                             <span className="sr-only">Not included: </span>
                           </>
                         )}
-                        <span className={f.included ? "text-text-muted" : "text-text-dim"}>
-                          {f.text}
-                        </span>
+                        <span className={f.included ? "text-text-muted" : "text-text-dim"}>{f.text}</span>
                       </li>
                     ))}
                   </ul>
@@ -365,7 +340,7 @@ export default function Pricing() {
 
         <Reveal delay={0.2} className="text-center mt-10">
           <p className="text-sm text-text-dim">
-            Mobile app included on every plan · Founder Pro is annual-only, locked for life
+            Mobile app included on every plan · Founding Member is annual-only, locked for life
           </p>
         </Reveal>
       </section>
@@ -377,7 +352,7 @@ export default function Pricing() {
           </h2>
           <p className="text-text-muted mt-3 text-sm">
             TradeBoard vs the competition — based on published prices as of{" "}
-            <span className="text-text font-semibold">July 12, 2026</span>.
+            <span className="text-text font-semibold">July 14, 2026</span>.
             Competitor prices verified via their public pricing pages.{" "}
             <span className="text-text-dim">Prices subject to change. Always verify directly.</span>
           </p>
@@ -385,7 +360,7 @@ export default function Pricing() {
 
         <Reveal delay={0.1}>
           <div className="overflow-x-auto">
-            <table className="w-full text-sm" aria-label="TradeBoard vs competitor pricing comparison">
+            <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-tb-border">
                   <th scope="col" className="text-left px-4 py-3 text-text-muted font-semibold whitespace-nowrap">Plan</th>
@@ -402,21 +377,14 @@ export default function Pricing() {
                 {competitors.map((row, i) => {
                   const isTB = row.name.startsWith("TradeBoard");
                   return (
-                    <tr
-                      key={row.name}
-                      className={`border-b border-tb-border last:border-0 ${
-                        isTB ? "bg-gold/5" : ""
-                      }`}
-                    >
-                      <td className={`px-4 py-3.5 font-semibold whitespace-nowrap ${
-                        isTB ? "text-gold" : "text-text"
-                      }`}>
+                    <tr key={row.name} className={`border-b border-tb-border last:border-0 ${isTB ? "bg-gold/5" : ""}`}>
+                      <td className={`px-4 py-3.5 font-semibold whitespace-nowrap ${isTB ? "text-gold" : "text-text"}`}>
                         {row.name}
                       </td>
                       <td className="px-4 py-3.5 text-center text-text-muted">{row.monthly}</td>
                       <td className="px-4 py-3.5 text-center font-semibold">
                         {row.annual}
-                        {isTB && row.name.includes("Founder") && (
+                        {isTB && row.name.includes("Founding") && (
                           <span className="block text-[10px] text-gold">locked for life</span>
                         )}
                       </td>
@@ -432,7 +400,7 @@ export default function Pricing() {
             </table>
           </div>
           <p className="text-[10px] text-text-dim mt-3 text-center">
-            Competitor prices sourced from their public pricing pages as of July 12, 2026.
+            Competitor prices sourced from their public pricing pages as of July 14, 2026.
             Prices, features, and tiers change frequently — verify directly before making a decision.
             TradeBoard pricing and features are subject to change. Not financial advice.
           </p>

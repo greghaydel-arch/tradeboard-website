@@ -195,7 +195,7 @@ export default function Features() {
           >
             <Zap size={14} />
             <Link to="/pricing" className="hover:underline">
-              Founder pricing available — lock in Pro at $199/yr for life. First 100 subscribers only.
+              Founding Member pricing available — lock in Pro at $199/yr for life. First 100 spots available.
             </Link>
           </motion.div>
         </div>

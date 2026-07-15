@@ -52,7 +52,6 @@ const chartBars = [40, 55, 30, 60, 80, 25, 70, 90, 45, 65, 85, 35, 75, 95];
 export default function Index() {
   return (
     <main id="main-content" className="pt-16">
-      {/* Font + Animations */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
         @keyframes float {
@@ -72,7 +71,6 @@ export default function Index() {
         }
       `}</style>
 
-      {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-40" />
         <div className="absolute top-0 left-1/4 w-[700px] h-[700px] bg-blue/20 rounded-full blur-[150px] -z-10" />
@@ -145,7 +143,6 @@ export default function Index() {
                 <Check size={14} className="text-green" /> Free forever plan · No credit card required
               </motion.p>
 
-              {/* Founding Member banner — FLOATING */}
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -154,12 +151,11 @@ export default function Index() {
               >
                 <Zap size={14} />
                 <Link to="/pricing" className="hover:underline">
-                  Founding Member pricing — $199/yr for life. First 100 only.
+                  Founding Member pricing — $199/yr for life. First 100 spots available.
                 </Link>
               </motion.div>
             </div>
 
-            {/* RIGHT: Animated Dashboard Mockup */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -168,7 +164,6 @@ export default function Index() {
             >
               <div className="absolute inset-0 gradient-btn rounded-2xl blur-3xl opacity-15" />
               <div className="relative bg-[#0f1729] border border-blue/20 rounded-2xl overflow-hidden shadow-2xl">
-                {/* Mockup header */}
                 <div className="flex items-center justify-between px-5 py-3 border-b border-tb-border/50">
                   <div className="flex items-center gap-3">
                     <div className="flex items-center gap-1.5">
@@ -184,7 +179,6 @@ export default function Index() {
                   </div>
                 </div>
 
-                {/* Stat cards */}
                 <div className="grid grid-cols-3 gap-3 p-5">
                   <div className="bg-bg-card/80 border border-tb-border rounded-xl p-3">
                     <p className="text-[10px] text-text-dim uppercase tracking-wider font-semibold">Total P&L</p>
@@ -208,7 +202,6 @@ export default function Index() {
                   </div>
                 </div>
 
-                {/* Chart bars — animated */}
                 <div className="px-5 pb-3">
                   <div className="flex items-center justify-between mb-2">
                     <p className="text-[11px] font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>P&L Trend — Last 30 Days</p>
@@ -224,15 +217,12 @@ export default function Index() {
                         initial={{ height: 0 }}
                         animate={{ height: `${h}%` }}
                         transition={{ duration: 1, delay: 0.6 + i * 0.05, ease: "easeOut" }}
-                        className={`w-full rounded-t-md ${
-                          i % 3 === 2 ? "bg-red/60" : "bg-green/70"
-                        }`}
+                        className={`w-full rounded-t-md ${i % 3 === 2 ? "bg-red/60" : "bg-green/70"}`}
                       />
                     ))}
                   </div>
                 </div>
 
-                {/* Bottom row */}
                 <div className="grid grid-cols-2 gap-3 p-5 pt-3">
                   <div className="bg-bg-card/80 border border-tb-border rounded-xl p-3 flex items-center justify-between">
                     <div>
@@ -255,13 +245,11 @@ export default function Index() {
                   </div>
                 </div>
 
-                {/* Shimmer overlay */}
                 <div className="absolute inset-0 animate-shimmer" />
               </div>
             </motion.div>
           </div>
 
-          {/* Stats */}
           <Reveal delay={0.2} className="mt-20 grid grid-cols-3 gap-4 max-w-2xl">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
@@ -275,7 +263,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Feature teasers */}
       <section className="max-w-6xl mx-auto px-5 py-24">
         <Reveal className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-cyan text-sm font-semibold uppercase tracking-wider">
@@ -314,7 +301,6 @@ export default function Index() {
         </Reveal>
       </section>
 
-      {/* CTA band */}
       <section className="max-w-6xl mx-auto px-5">
         <Reveal>
           <div className="relative overflow-hidden rounded-2xl border border-tb-border bg-bg-elevated p-10 md:p-16 text-center">
