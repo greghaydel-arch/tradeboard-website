@@ -79,8 +79,8 @@ export default function ComingSoon() {
           transition={{ delay: 0.2 }}
           className="text-text-muted text-lg leading-relaxed mb-10"
         >
-          A professional trading journal and analytics platform built for serious retail traders.
-          Multi-broker, psychology tracking, trade replay — one dashboard.
+          A historical trading journal and performance review platform for retail traders.
+          Initial invited testing uses a validated CSV import format; direct broker connections are not enabled.
         </motion.p>
 
         {/* Email form */}
@@ -124,7 +124,7 @@ export default function ComingSoon() {
           transition={{ delay: 0.4 }}
           className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-10 text-text-muted text-sm"
         >
-          {["Multi-broker support", "Psychology & mood tracking", "Trade Replay", "AI Trade Coach", "Desktop + Mobile"].map((f) => (
+          {["Historical performance review", "Trading journal", "CSV import for invited testing", "Education-first", "More features planned"].map((f) => (
             <span key={f} className="flex items-center gap-1.5">
               <span className="w-1 h-1 rounded-full bg-cyan" />
               {f}
