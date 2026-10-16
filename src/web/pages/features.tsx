@@ -4,7 +4,6 @@ import {
   Play,
   Brain,
   Plug,
-  Smartphone,
   Monitor,
   BarChart3,
   Tags,
@@ -12,7 +11,6 @@ import {
   FileDown,
   ArrowRight,
   Check,
-  X,
   Zap,
 } from "lucide-react";
 import { Reveal } from "../components/reveal";
@@ -49,34 +47,34 @@ const featureBlocks = [
     edge: "TraderSync & Tradervue don't track this at all.",
   },
   {
-    tag: "Multi-Broker Support",
+    tag: "Historical CSV Import",
     icon: Plug,
     color: "text-gold",
-    headline: "One dashboard. Every broker.",
-    body: "Connect Webull directly or import a CSV from any broker — TD Ameritrade, Robinhood, IBKR, Tastytrade, Alpaca and more. TradeBoard normalizes everything into one clean, unified view so you finally see your complete trading picture.",
+    headline: "Start with historical trades.",
+    body: "Initial invited testing accepts one validated CSV trade-history format. Direct broker syncing and additional import formats are separate future work requiring approval and certification.",
     points: [
-      "Webull direct connection",
-      "CSV import — works with any broker",
-      "Unified, broker-agnostic trade view",
-      "More direct integrations coming soon",
+      "Manual trade-history import in invited testing",
+      "One validated CSV format initially",
+      "Historical trade review in one workspace",
+      "Additional formats require certification",
     ],
-    img: "/feature-broker.png",
-    edge: "Competitors lock you to one or two brokers.",
+    img: "/hero-dashboard.png",
+    edge: "Initial scope is intentionally narrow and read-only.",
   },
   {
-    tag: "Desktop + Mobile Apps",
+    tag: "Web-first Product Roadmap",
     icon: Monitor,
     color: "text-green",
-    headline: "Trade anywhere. Review everywhere.",
-    body: "Full-featured native apps for Windows and your phone. Log a trade on your desktop, review your psychology dashboard on the go, get notifications when you need them. Your journal goes where you go.",
+    headline: "A focused web experience first.",
+    body: "The browser interface is being refined for invited access. Native desktop and mobile apps are longer-term roadmap work; they are not available in the first release.",
     points: [
-      "Native Windows desktop app (Mac coming soon)",
-      "Full mobile experience — iOS & Android",
-      "Real-time sync across every device",
-      "Mobile app available on every plan including Free",
+      "Web experience prioritized for invited release",
+      "Native iOS and Android apps not yet released",
+      "No live broker synchronization in first release",
+      "Availability depends on future feature certification",
     ],
     img: "/feature-devices.png",
-    edge: "Most competitors are web-only or have basic mobile.",
+    edge: "Launch readiness takes priority over platform breadth.",
   },
   {
     tag: "Trade Tagging & Playbooks",
@@ -140,21 +138,6 @@ const featureBlocks = [
   },
 ];
 
-const comparison = [
-  { feature: "Trade Replay (intraday)", tb: true, others: false },
-  { feature: "Psychology & Mood Tracking", tb: true, others: false },
-  { feature: "Correlation Analysis (behavioral + performance)", tb: true, others: false },
-  { feature: "Monthly / Weekly Auto-Summaries", tb: true, others: "partial" },
-  { feature: "Trade Tagging & Playbook Analytics", tb: true, others: "partial" },
-  { feature: "Multi-broker + CSV (any broker)", tb: true, others: "partial" },
-  { feature: "Windows Desktop App", tb: true, others: "partial" },
-  { feature: "iOS + Android Mobile Apps", tb: true, others: "partial" },
-  { feature: "PDF + CSV Export (every chart)", tb: true, others: "partial" },
-  { feature: "Free plan (no timer)", tb: true, others: "partial" },
-  { feature: "20+ analytics dashboards", tb: true, others: true },
-  { feature: "AI Trade Coach", tb: true, others: "partial" },
-];
-
 export default function Features() {
   return (
     <main id="main-content" className="pt-16">
@@ -175,7 +158,7 @@ export default function Features() {
             transition={{ delay: 0.08 }}
             className="font-display font-extrabold text-4xl md:text-5xl mt-3 max-w-2xl mx-auto leading-tight"
           >
-            Everything you need to <span className="gradient-text">find your edge.</span>
+            A preview of where <span className="gradient-text">TradeBoard is headed.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -183,8 +166,8 @@ export default function Features() {
             transition={{ delay: 0.16 }}
             className="text-text-muted mt-5 max-w-xl mx-auto"
           >
-            TradeBoard isn't just a logbook. It's a system for understanding your trades,
-            your patterns, and yourself.
+            The feature gallery below illustrates roadmap concepts, not the certified invited-release feature set.
+            Initial access is limited to validated historical trade import and review.
           </motion.p>
 
           <motion.div
@@ -227,7 +210,7 @@ export default function Features() {
                 ))}
               </ul>
               <div className="mt-6 inline-block text-xs text-gold bg-gold/10 border border-gold/20 rounded-lg px-3 py-2">
-                ⚡ {f.edge}
+                Roadmap concept — availability subject to certification
               </div>
             </Reveal>
 
@@ -236,69 +219,13 @@ export default function Features() {
                 <div className="absolute inset-0 gradient-btn rounded-2xl blur-2xl opacity-15" />
                 <img
                   src={f.img}
-                  alt={`${f.tag} feature screenshot`}
+                  alt={`${f.tag} illustrative feature concept`}
                   className="relative rounded-xl border border-tb-border shadow-2xl w-full"
                 />
               </div>
             </Reveal>
           </div>
         ))}
-      </section>
-
-      <section className="max-w-3xl mx-auto px-5 py-12">
-        <Reveal className="text-center mb-10">
-          <h2 className="font-display font-extrabold text-3xl">
-            How we <span className="gradient-text">stack up</span>
-          </h2>
-          <p className="text-text-muted mt-3">
-            The features that actually move the needle — vs TraderSync, Tradervue & others.
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.1}>
-          <div className="bg-bg-card border border-tb-border rounded-xl overflow-hidden">
-            <table className="w-full text-sm" aria-label="TradeBoard vs competitors feature comparison">
-              <thead>
-                <tr className="border-b border-tb-border">
-                  <th scope="col" className="text-left px-5 py-4 text-text-muted font-semibold">Feature</th>
-                  <th scope="col" className="text-center px-5 py-4 font-semibold">
-                    <span className="gradient-text">TradeBoard</span>
-                  </th>
-                  <th scope="col" className="text-center px-5 py-4 text-text-muted font-semibold">Competitors</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparison.map((row) => (
-                  <tr
-                    key={row.feature}
-                    className="border-b border-tb-border last:border-0"
-                  >
-                    <td className="px-5 py-3.5 text-text">{row.feature}</td>
-                    <td className="px-5 py-3.5 text-center">
-                      <Check className="text-green inline-block" size={18} aria-hidden="true" />
-                      <span className="sr-only">Yes</span>
-                    </td>
-                    <td className="px-5 py-3.5 text-center">
-                      {row.others === true ? (
-                        <>
-                          <Check className="text-text-dim inline-block" size={18} aria-hidden="true" />
-                          <span className="sr-only">Yes</span>
-                        </>
-                      ) : row.others === "partial" ? (
-                        <span className="text-xs text-gold">Partial / Extra cost</span>
-                      ) : (
-                        <>
-                          <X className="text-red/60 inline-block" size={18} aria-hidden="true" />
-                          <span className="sr-only">No</span>
-                        </>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Reveal>
       </section>
 
       <section className="max-w-6xl mx-auto px-5 pb-24">
