@@ -29,21 +29,21 @@ const features = [
   },
   {
     icon: Plug,
-    title: "Multi-Broker",
-    desc: "Connect Webull, Robinhood, or import CSV. Every trade, one dashboard.",
+    title: "CSV Import Preview",
+    desc: "Initial invited testing starts with one validated trade-history CSV format. Direct broker sync is not enabled.",
     color: "text-gold",
   },
   {
     icon: Smartphone,
-    title: "Desktop + Mobile",
-    desc: "Full apps for Windows, Mac, and your phone. Trade anywhere, review everywhere.",
+    title: "Web-first Experience",
+    desc: "The browser experience is being refined. Standalone mobile and desktop apps are future work.",
     color: "text-green",
   },
 ];
 
 const stats = [
-  { value: "20+", label: "Analytics dashboards" },
-  { value: "3", label: "Broker integrations" },
+  { value: "Historical", label: "Analysis focus" },
+  { value: "CSV", label: "Invited import workflow" },
   { value: "100%", label: "Your data, your control" },
 ];
 
@@ -86,7 +86,7 @@ export default function Index() {
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bg-card border border-tb-border text-xs text-text-muted mb-6"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
-                Now in early access
+                Preparing invited access
               </motion.div>
 
               <motion.h1
@@ -110,8 +110,8 @@ export default function Index() {
                 transition={{ duration: 0.7, delay: 0.15 }}
                 className="mt-6 text-base md:text-lg text-text-muted max-w-md leading-relaxed"
               >
-                Psychology tracking. Trade Replay. Multi-broker — all in one dashboard.
-                The only journal built to show you <em>why</em> you win or lose.
+                Review your historical trades, document decisions, and understand past performance.
+                Advanced features shown here are roadmap concepts until individually certified.
               </motion.p>
 
               <motion.div
@@ -124,7 +124,7 @@ export default function Index() {
                   to="/pricing"
                   className="gradient-btn text-white font-semibold px-6 py-3 rounded-lg flex items-center gap-2 transition-shadow"
                 >
-                  Start Free <ArrowRight size={18} />
+                  Preview Plans <ArrowRight size={18} />
                 </Link>
                 <Link
                   to="/features"
@@ -140,7 +140,7 @@ export default function Index() {
                 transition={{ duration: 0.7, delay: 0.35 }}
                 className="mt-4 text-xs text-text-dim flex items-center gap-1.5"
               >
-                <Check size={14} className="text-green" /> Free forever plan · No credit card required
+                <Check size={14} className="text-green" /> Permanent Free tier planned · Public signup not open
               </motion.p>
 
               <motion.div
@@ -151,7 +151,7 @@ export default function Index() {
               >
                 <Zap size={14} />
                 <Link to="/pricing" className="hover:underline">
-                  Founding Member pricing — $199/yr for life. First 100 spots available.
+                  Proposed Founding Member offer — $199/yr for the first 100 subscribers at launch.
                 </Link>
               </motion.div>
             </div>
@@ -171,11 +171,11 @@ export default function Index() {
                       <div className="w-2.5 h-2.5 rounded-full bg-yellow/60" />
                       <div className="w-2.5 h-2.5 rounded-full bg-green/60" />
                     </div>
-                    <span className="text-[11px] text-text-dim">TradeBoard Dashboard</span>
+                    <span className="text-[11px] text-text-dim">TradeBoard concept dashboard — sample data</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-green animate-pulse" />
-                    <span className="text-[10px] text-text-dim">Live</span>
+                    <span className="text-[10px] text-text-dim">Illustrative</span>
                   </div>
                 </div>
 
@@ -312,13 +312,13 @@ export default function Index() {
                 Your edge is hiding in your data.
               </h2>
               <p className="text-text-muted mt-4 max-w-md mx-auto">
-                Start journaling free today. Find the patterns that make you money — and the ones that don't.
+                Historical trade review will open to invited users after UI and security acceptance. Join the launch waitlist for updates.
               </p>
               <Link
                 to="/pricing"
                 className="gradient-btn text-white font-semibold px-7 py-3 rounded-lg inline-flex items-center gap-2 mt-8 transition-shadow"
               >
-                Start Free <ArrowRight size={18} />
+                Preview Plans <ArrowRight size={18} />
               </Link>
             </div>
           </div>
