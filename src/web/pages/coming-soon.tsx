@@ -1,37 +1,7 @@
-import { useState } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function ComingSoon() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email) return;
-    setLoading(true);
-    setError("");
-
-    try {
-      const res = await fetch("https://formspree.io/f/REPLACE_WITH_YOUR_ID", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      if (res.ok) {
-        setSubmitted(true);
-      } else {
-        setError("Something went wrong. Try again.");
-      }
-    } catch {
-      setError("Something went wrong. Try again.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
   return (
     <main className="min-h-screen bg-bg flex flex-col items-center justify-center px-5 relative overflow-hidden">
       {/* Background glow */}
@@ -83,38 +53,31 @@ export default function ComingSoon() {
           Initial invited testing uses a validated CSV import format; direct broker connections are not enabled.
         </motion.p>
 
-        {/* Email form */}
+        {/* The existing Cajun AI / TradeBoard Zoho waitlist is the single signup destination.
+            Embedded for convenience; the direct link remains usable if third-party iframes are blocked. */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.26 }}
+          className="w-full"
         >
-          {submitted ? (
-            <div className="flex items-center justify-center gap-3 bg-green-500/10 border border-green-500/30 text-green-400 rounded-xl px-6 py-4 font-medium">
-              <CheckCircle size={20} />
-              You're on the list — we'll reach out when we launch.
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                required
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-bg-elevated border border-tb-border rounded-xl px-5 py-3.5 text-text placeholder:text-text-muted focus:outline-none focus:border-blue transition-colors"
-              />
-              <button
-                type="submit"
-                disabled={loading}
-                className="flex items-center justify-center gap-2 bg-blue hover:bg-blue/90 text-white font-semibold px-6 py-3.5 rounded-xl transition-all whitespace-nowrap disabled:opacity-60"
-              >
-                {loading ? "Sending..." : "Get Early Access"}
-                {!loading && <ArrowRight size={16} />}
-              </button>
-            </form>
-          )}
-          {error && <p className="text-red-400 text-sm mt-3">{error}</p>}
+          <div className="rounded-xl border border-tb-border bg-bg-card overflow-hidden">
+            <iframe
+              title="TradeBoard Waitlist Signup"
+              aria-label="TradeBoard Waitlist Signup"
+              src="https://forms.zohopublic.com/greghaydelgm1/form/TradeBoardWaitlist/formperma/ZesK-fk6NxQJBtB0a818KwRQSZhoyC8ThdQ-Co-J8Wc"
+              className="w-full h-[420px] border-0"
+              loading="lazy"
+            />
+          </div>
+          <a
+            href="https://forms.zohopublic.com/greghaydelgm1/form/TradeBoardWaitlist/formperma/ZesK-fk6NxQJBtB0a818KwRQSZhoyC8ThdQ-Co-J8Wc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-cyan hover:text-blue mt-3"
+          >
+            Trouble viewing the form? Open the waitlist <ArrowRight size={16} aria-hidden="true" />
+          </a>
         </motion.div>
 
         {/* Feature hints */}
