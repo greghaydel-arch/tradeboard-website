@@ -1,4 +1,3 @@
-import { Link } from "wouter";
 import { motion } from "motion/react";
 import { Check, X, ArrowRight, Zap } from "lucide-react";
 import { useState } from "react";
@@ -7,13 +6,13 @@ import { Reveal } from "../components/reveal";
 const foundingFeaturesPro = [
   { text: "Unlimited trade history", included: true },
   { text: "All 20+ analytics dashboards", included: true },
-  { text: "Multi-broker support", included: true },
+  { text: "Direct broker sync (future certification)", included: false },
   { text: "Psychology & mood tracking", included: true },
   { text: "Trade Replay (daily candles)", included: true },
   { text: "Trade tagging & unlimited playbooks", included: true },
   { text: "Correlation analysis", included: true },
   { text: "Monthly & weekly summaries", included: true },
-  { text: "Windows desktop + full mobile apps", included: true },
+  { text: "Native desktop / mobile apps (planned)", included: false },
   { text: "Full education hub", included: true },
   { text: "Unlimited export (CSV & PDF)", included: true },
   { text: "Screenshot attachments — cloud storage (unlimited)", included: true },
@@ -29,22 +28,22 @@ const tiers = [
     annual: "$0",
     annualMonthly: "$0",
     cadence: "forever",
-    tagline: "Try it. Keep it. But you'll hit the ceiling fast.",
+    tagline: "Permanent Free tier planned; launch details are being finalized.",
     cta: "Start Free",
     highlight: false,
     features: [
       { text: "45 days of trade history", included: true },
       { text: "6 core charts only", included: true },
-      { text: "1 broker connection", included: true },
+      { text: "Validated CSV import workflow (invited test)", included: true },
       { text: "1 playbook", included: true },
-      { text: "Mobile app (basic charts only)", included: true },
+      { text: "Web UI under development", included: false },
       { text: "Web access", included: true },
       { text: "Platform how-to articles", included: true },
       { text: "Screenshot attachments (10 max)", included: true },
       { text: "Psychology & mood tracking", included: false },
       { text: "Full analytics dashboards (20+)", included: false },
       { text: "Trade Replay", included: false },
-      { text: "Multi-broker support", included: false },
+      { text: "Direct broker sync (not in first release)", included: false },
       { text: "Export (CSV / PDF)", included: false },
     ],
   },
@@ -54,7 +53,7 @@ const tiers = [
     annual: "$199",
     annualMonthly: "$17",
     cadence: "/yr",
-    tagline: "Lock in Pro at $199/yr — forever. First 100 spots available.",
+    tagline: "Proposed $199/yr offer for first 100 subscribers; not open yet.",
     cta: "Join the First 100",
     highlight: true,
     badge: "Founding Member",
@@ -73,13 +72,13 @@ const tiers = [
     features: [
       { text: "Unlimited trade history", included: true },
       { text: "All 20+ analytics dashboards", included: true },
-      { text: "Multi-broker support", included: true },
+      { text: "Direct broker sync (future certification)", included: false },
       { text: "Psychology & mood tracking", included: true },
       { text: "Trade Replay (daily candles)", included: true },
       { text: "Trade tagging & unlimited playbooks", included: true },
       { text: "Correlation analysis", included: true },
       { text: "Monthly & weekly summaries", included: true },
-      { text: "Windows desktop + full mobile apps", included: true },
+      { text: "Native desktop / mobile apps (planned)", included: false },
       { text: "Full education hub", included: true },
       { text: "Unlimited export (CSV & PDF)", included: true },
       { text: "Screenshot attachments — cloud storage (unlimited)", included: true },
@@ -126,15 +125,15 @@ const faq = [
   },
   {
     q: "What exactly does 'limited' mean on Free?",
-    a: "45 days of trade history (Pro gets unlimited), 6 charts instead of 20+, no psychology tracking, no trade replay, no export, and 1 broker. You can see what you're missing on each card above.",
+    a: "The permanent Free plan is proposed. Exact history, dashboard, import, and journal limits will be finalized after release certification.",
   },
   {
-    q: "Which brokers do you support?",
-    a: "Webull and Robinhood connect directly. You can also import a CSV from virtually any broker. More direct integrations are on the way.",
+    q: "Are direct broker connections supported?",
+    a: "No. Initial invited testing is limited to one validated CSV import format; no direct broker sync is enabled. Additional formats or read-only connections require certification.",
   },
   {
-    q: "Do I get the mobile app on the free plan?",
-    a: "Yes. The mobile app is available on every plan — free users get basic charts, Pro and Pro+ unlock the full experience.",
+    q: "Are native mobile apps available?",
+    a: "Not yet. Native iOS and Android applications are planned and are not part of the first invited release.",
   },
   {
     q: "Can I cancel anytime?",
@@ -142,20 +141,8 @@ const faq = [
   },
 ];
 
-const competitors = [
-  { name: "TradeBoard (Pro)", monthly: "$29", annual: "$278", free: "Yes", replay: "Daily", psych: "Yes", broker: "Multiple", ai: "300/mo" },
-  { name: "TradeBoard (Founding Member)", monthly: "—", annual: "$199", free: "Yes", replay: "Daily", psych: "Yes", broker: "Multiple", ai: "300/mo" },
-  { name: "TraderSync Pro", monthly: "$29.95", annual: "$312.60", free: "Trial only", replay: "Premium tier", psych: "No", broker: "5 accounts", ai: "~150/mo" },
-  { name: "TradeZella Essential", monthly: "$35", annual: "$315", free: "No", replay: "Daily", psych: "Basic", broker: "1", ai: "500/mo" },
-  { name: "TradeZella Pro", monthly: "$59", annual: "$531", free: "No", replay: "Intraday", psych: "Full", broker: "Multi", ai: "1,000/mo" },
-  { name: "TradeZella Ultra", monthly: "$99", annual: "$891", free: "No", replay: "Tick-level", psych: "Advanced", broker: "Unlimited", ai: "2,000/mo" },
-  { name: "Tradervue Silver", monthly: "$29.95", annual: "$359.40", free: "30 trades/mo", replay: "No", psych: "No", broker: "1", ai: "No" },
-  { name: "TradesViz Pro", monthly: "$19.99", annual: "$179.88", free: "Basic", replay: "Platinum tier", psych: "Limited", broker: "Multiple", ai: "Platinum only" },
-];
-
 export default function Pricing() {
   const [annual, setAnnual] = useState(true);
-  const [spotsLeft] = useState(93);
 
   return (
     <main id="main-content" className="pt-16">
@@ -184,7 +171,7 @@ export default function Pricing() {
             transition={{ delay: 0.16 }}
             className="text-text-muted mt-5 max-w-lg mx-auto"
           >
-            Start free, forever. Upgrade when you want more. No trial timers, no surprises.
+            Plan preview only — no paid checkout is open. Features, pricing, and entitlements require final approval before launch.
           </motion.p>
 
           <motion.div
@@ -279,7 +266,7 @@ export default function Pricing() {
                       </p>
                       {!annual && (
                         <p className="text-[10px] text-gold font-semibold mt-1">
-                          Annual only — switch to Annual to subscribe
+                          Founding offer will be annual-only if launched
                         </p>
                       )}
                     </>
@@ -295,22 +282,22 @@ export default function Pricing() {
                   {t.annualOnly && (
                     <div className="mt-3 bg-gold/10 border border-gold/30 rounded-lg px-3 py-2 text-center">
                       <p className="text-xs font-bold text-gold">
-                        {spotsLeft} of 100 spots remaining
+                        Founding offer planned for the first 100 subscribers
                       </p>
-                      <p className="text-[10px] text-text-dim mt-0.5">Locked in for life</p>
+                      <p className="text-[10px] text-text-dim mt-0.5">Subject to published launch terms</p>
                     </div>
                   )}
 
-                  <Link
-                    to="/login"
+                  <a
+                    href="https://cajun-ai.com/pages/tradeboard.html"
                     className={`mt-6 text-center font-semibold px-5 py-3 rounded-lg transition-all ${t.annualOnly ? "bg-gold text-black hover:bg-gold/90" : t.highlight ? "gradient-btn text-white" : "border border-tb-border hover:border-text-dim text-text"}`}
                   >
-                    {t.cta}
-                  </Link>
+                    Join Waitlist
+                  </a>
 
                   {t.annualOnly && !annual && (
                     <p className="text-[10px] text-text-dim mt-2 text-center">
-                      Switch to Annual billing above to purchase
+                      Annual-only offer — purchases not yet open
                     </p>
                   )}
 
@@ -340,69 +327,7 @@ export default function Pricing() {
 
         <Reveal delay={0.2} className="text-center mt-10">
           <p className="text-sm text-text-dim">
-            Mobile app included on every plan · Founding Member is annual-only, locked for life
-          </p>
-        </Reveal>
-      </section>
-
-      <section className="max-w-5xl mx-auto px-5 py-16">
-        <Reveal className="text-center mb-10">
-          <h2 className="font-display font-extrabold text-3xl">
-            How we <span className="gradient-text">compare</span>
-          </h2>
-          <p className="text-text-muted mt-3 text-sm">
-            TradeBoard vs the competition — based on published prices as of{" "}
-            <span className="text-text font-semibold">July 14, 2026</span>.
-            Competitor prices verified via their public pricing pages.{" "}
-            <span className="text-text-dim">Prices subject to change. Always verify directly.</span>
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.1}>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-tb-border">
-                  <th scope="col" className="text-left px-4 py-3 text-text-muted font-semibold whitespace-nowrap">Plan</th>
-                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">Monthly</th>
-                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">Annual</th>
-                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">Free Tier</th>
-                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">Replay</th>
-                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">Psychology</th>
-                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">Multi-Broker</th>
-                  <th scope="col" className="text-center px-4 py-3 text-text-muted font-semibold">AI Coach</th>
-                </tr>
-              </thead>
-              <tbody>
-                {competitors.map((row, i) => {
-                  const isTB = row.name.startsWith("TradeBoard");
-                  return (
-                    <tr key={row.name} className={`border-b border-tb-border last:border-0 ${isTB ? "bg-gold/5" : ""}`}>
-                      <td className={`px-4 py-3.5 font-semibold whitespace-nowrap ${isTB ? "text-gold" : "text-text"}`}>
-                        {row.name}
-                      </td>
-                      <td className="px-4 py-3.5 text-center text-text-muted">{row.monthly}</td>
-                      <td className="px-4 py-3.5 text-center font-semibold">
-                        {row.annual}
-                        {isTB && row.name.includes("Founding") && (
-                          <span className="block text-[10px] text-gold">locked for life</span>
-                        )}
-                      </td>
-                      <td className="px-4 py-3.5 text-center text-text-muted text-xs">{row.free}</td>
-                      <td className="px-4 py-3.5 text-center text-text-muted text-xs">{row.replay}</td>
-                      <td className="px-4 py-3.5 text-center text-text-muted text-xs">{row.psych}</td>
-                      <td className="px-4 py-3.5 text-center text-text-muted text-xs">{row.broker}</td>
-                      <td className="px-4 py-3.5 text-center text-text-muted text-xs">{row.ai}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-          <p className="text-[10px] text-text-dim mt-3 text-center">
-            Competitor prices sourced from their public pricing pages as of July 14, 2026.
-            Prices, features, and tiers change frequently — verify directly before making a decision.
-            TradeBoard pricing and features are subject to change. Not financial advice.
+            Native mobile apps are planned, not available. All plans and pricing here are proposals.
           </p>
         </Reveal>
       </section>
@@ -429,15 +354,15 @@ export default function Pricing() {
             <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[300px] bg-blue/20 rounded-full blur-[100px]" />
             <div className="relative">
               <h2 className="font-display font-extrabold text-3xl md:text-4xl">
-                Start free in 60 seconds.
+                Join the launch waitlist.
               </h2>
-              <p className="text-text-muted mt-4">No credit card. No commitment.</p>
-              <Link
-                to="/login"
+              <p className="text-text-muted mt-4">We will share verified features and signup details before public launch.</p>
+              <a
+                href="https://cajun-ai.com/pages/tradeboard.html"
                 className="gradient-btn text-white font-semibold px-7 py-3 rounded-lg inline-flex items-center gap-2 mt-8 transition-shadow"
               >
-                Get Started <ArrowRight size={18} />
-              </Link>
+                Join Waitlist <ArrowRight size={18} />
+              </a>
             </div>
           </div>
         </Reveal>
