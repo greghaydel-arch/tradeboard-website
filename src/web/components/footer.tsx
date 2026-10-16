@@ -28,6 +28,7 @@ export function Footer() {
               <li><Link to="/features" className="text-text-muted hover:text-text transition-colors">Features</Link></li>
               <li><Link to="/pricing" className="text-text-muted hover:text-text transition-colors">Pricing</Link></li>
               <li><Link to="/charts" className="text-text-muted hover:text-text transition-colors">Charts & Data</Link></li>
+              <li><a href="https://cajun-ai.com/pages/youtube.html#tradeboard" className="text-text-muted hover:text-text transition-colors">App tutorials (planned)</a></li>
               <li><Link to="/login" className="text-text-muted hover:text-text transition-colors">Log in</Link></li>
             </ul>
           </div>
@@ -38,7 +39,8 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li><a href="https://cajun-ai.com" className="text-text-muted hover:text-text transition-colors">Cajun AI</a></li>
-              <li><a href="https://cajun-ai.com" className="text-text-muted hover:text-text transition-colors">About</a></li>
+              <li><a href="https://cajun-ai.com/pages/about.html" className="text-text-muted hover:text-text transition-colors">About</a></li>
+              <li><a href="https://cajun-ai.com/pages/youtube.html" className="text-text-muted hover:text-text transition-colors">Cajun AI video series</a></li>
               <li><a href="mailto:hello@tradeboard.com" className="text-text-muted hover:text-text transition-colors">Contact</a></li>
             </ul>
           </div>
