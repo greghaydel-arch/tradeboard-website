@@ -7,21 +7,21 @@ const gallery = [
   {
     img: "/hero-dashboard.png",
     title: "Performance Dashboard",
-    desc: "Your complete P&L picture — equity curve, win rate, daily breakdown, and trade history in one view.",
+    desc: "Illustrative dashboard concept; advanced metrics are outside the first invited release.",
     span: "lg:col-span-2",
     badges: null as null | { label: string; color: string; note: string }[],
   },
   {
     img: "/feature-psychology.png",
     title: "Psychology Analytics",
-    desc: "Mood-to-P&L correlation, discipline scoring, and emotion trends.",
+    desc: "Roadmap concept only. Dedicated psychology analytics are disabled in the first invited release.",
     span: "",
     badges: null as null | { label: string; color: string; note: string }[],
   },
   {
     img: "/feature-replay.png",
     title: "Trade Replay",
-    desc: "Step through any trade bar-by-bar with entry and exit markers.",
+    desc: "Roadmap concept only. Replay is disabled in the first invited release.",
     span: "",
     badges: null as null | { label: string; color: string; note: string }[],
   },
@@ -75,12 +75,12 @@ export default function Charts() {
                 <div className="relative overflow-hidden">
                   <img
                     src={g.img}
-                    alt={g.title}
+                    alt={`${g.title} — illustrative concept, not an application screenshot`}
                     className="w-full group-hover:scale-[1.02] transition-transform duration-500"
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="font-display font-bold text-lg">{g.title}</h3>
+                  <h3 className="font-display font-bold text-lg">{g.title}</h3><p className="text-xs text-cyan mt-2">Illustrative concept — not an application screenshot</p>
                   <p className="text-sm text-text-muted mt-2 leading-relaxed">{g.desc}</p>
                   {g.badges && (
                     <div className="mt-4">
@@ -122,7 +122,7 @@ export default function Charts() {
             {[
               { value: "History", label: "Analytics focus" },
               { value: "CSV", label: "Invited import workflow" },
-              { value: "Every", label: "Metric that matters" },
+              { value: "Planned", label: "Advanced metrics" },
             ].map((s) => (
               <div
                 key={s.label}

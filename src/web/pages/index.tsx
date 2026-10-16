@@ -9,22 +9,22 @@ import {
   TrendingUp,
   Check,
   Zap,
-  TrendingDown,
   Pencil,
 } from "lucide-react";
 import { Reveal } from "../components/reveal";
+import { ProductShowcase } from "../components/product-showcase";
 
 const features = [
   {
     icon: Play,
     title: "Trade Replay",
-    desc: "Relive every trade bar-by-bar. Daily + intraday candles. Learn from every mistake.",
+    desc: "Historical replay is a roadmap concept and is disabled in the first invited release.",
     color: "text-blue",
   },
   {
     icon: Brain,
     title: "Psychology Tracking",
-    desc: "Tag your emotions, score your discipline, and see how your mindset drives your P&L.",
+    desc: "Dedicated psychology tools are roadmap concepts outside the first invited release.",
     color: "text-cyan",
   },
   {
@@ -44,7 +44,7 @@ const features = [
 const stats = [
   { value: "Historical", label: "Analysis focus" },
   { value: "CSV", label: "Invited import workflow" },
-  { value: "100%", label: "Your data, your control" },
+  { value: "Web", label: "Initial experience" },
 ];
 
 const chartBars = [40, 55, 30, 60, 80, 25, 70, 90, 45, 65, 85, 35, 75, 95];
@@ -300,6 +300,8 @@ export default function Index() {
           </Link>
         </Reveal>
       </section>
+
+      <ProductShowcase />
 
       <section className="max-w-6xl mx-auto px-5">
         <Reveal>

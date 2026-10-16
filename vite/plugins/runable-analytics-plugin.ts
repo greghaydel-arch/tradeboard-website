@@ -21,7 +21,7 @@ export default function runableAnalyticsPlugin(): Plugin {
 			script.src = "/runable.js";
 			script.dataset.hostname = hostname;
 			script.dataset.url = "https://r.lilstts.com/events";
-			if (hostname === "localhost") {
+			if (process.env.NODE_ENV === "development" && hostname === "localhost") {
 				script.dataset.debug = hostname;
 			}
 			head.appendChild(script);

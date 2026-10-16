@@ -46,8 +46,8 @@ export default function PreviewGate() {
           <div className="flex items-center justify-center w-12 h-12 bg-blue/10 rounded-xl mb-5 mx-auto">
             <Lock size={20} className="text-blue" aria-hidden="true" />
           </div>
-          <h2 className="font-display font-bold text-xl text-center mb-1">Preview Access</h2>
-          <p className="text-text-muted text-sm text-center mb-6">Enter your password to view the full site.</p>
+          <h1 className="font-display font-bold text-xl text-center mb-1">Preview Access</h1>
+          <p className="text-text-muted text-sm text-center mb-6">Editorial preview only. This browser-side gate does not protect private material. Do not enter an account password.</p>
 
           <motion.form
             onSubmit={handleSubmit}

@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function ComingSoon() {
   return (
-    <main className="min-h-screen bg-bg flex flex-col items-center justify-center px-5 relative overflow-hidden">
+    <main id="main-content" tabIndex={-1} className="py-12 min-h-screen bg-bg flex flex-col items-center justify-center px-5 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-blue/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-cyan/8 rounded-full blur-[120px] pointer-events-none" />
@@ -50,7 +50,7 @@ export default function ComingSoon() {
           className="text-text-muted text-lg leading-relaxed mb-10"
         >
           A historical trading journal and performance review platform for retail traders.
-          Initial invited testing uses a validated CSV import format; direct broker connections are not enabled.
+          The initial invited scope is one validated Webull CSV format for USD equity fills. Direct broker connections are not enabled.
         </motion.p>
 
         {/* The existing Cajun AI / TradeBoard Zoho waitlist is the single signup destination.
@@ -66,8 +66,8 @@ export default function ComingSoon() {
               title="TradeBoard Waitlist Signup"
               aria-label="TradeBoard Waitlist Signup"
               src="https://forms.zohopublic.com/greghaydelgm1/form/TradeBoardWaitlist/formperma/ZesK-fk6NxQJBtB0a818KwRQSZhoyC8ThdQ-Co-J8Wc"
-              className="w-full h-[420px] border-0"
-              loading="lazy"
+              className="w-full h-[520px] border-0"
+              loading="eager"
             />
           </div>
           <a
@@ -79,6 +79,9 @@ export default function ComingSoon() {
             Trouble viewing the form? Open the waitlist <ArrowRight size={16} aria-hidden="true" />
           </a>
         </motion.div>
+
+        <p className="text-sm text-text-muted mt-4">This form is provided by Zoho. Confirm submission in the form; joining does not create an account, reserve a Founding Member place, or start a paid subscription.</p>
+        <p className="mt-4"><a className="text-cyan underline" href="https://cajun-ai.com/pages/youtube.html#tradeboard">TradeBoard by Cajun AI — planned tutorials</a></p>
 
         {/* Feature hints */}
         <motion.div
@@ -101,7 +104,7 @@ export default function ComingSoon() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
-        className="absolute bottom-6 text-center text-text-muted text-xs"
+        className="relative mt-12 px-5 text-center text-text-muted text-xs"
       >
         <p>© 2026 Cajun AI LLC. All rights reserved. TradeBoard is a product of Cajun AI LLC.</p>
       </motion.div>

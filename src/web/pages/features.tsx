@@ -7,8 +7,6 @@ import {
   Monitor,
   BarChart3,
   Tags,
-  CalendarDays,
-  FileDown,
   ArrowRight,
   Check,
   Zap,
@@ -16,126 +14,12 @@ import {
 import { Reveal } from "../components/reveal";
 
 const featureBlocks = [
-  {
-    tag: "Trade Replay",
-    icon: Play,
-    color: "text-blue",
-    headline: "Relive every trade. Learn from every mistake.",
-    body: "Step through your trades candle by candle — daily and intraday. Watch exactly where you entered, where you exited, and where you should have. The replay engine turns hindsight into a teachable edge.",
-    points: [
-      "Bar-by-bar playback with entry & exit markers",
-      "Daily + intraday candle timeframes",
-      "Notes and emotion tagging on every replay",
-      "No external data feed needed — runs on your trades",
-    ],
-    img: "/feature-replay.png",
-    edge: "Tradervue has no replay. TraderSync lacks intraday.",
-  },
-  {
-    tag: "Psychology & Mood Tracking",
-    icon: Brain,
-    color: "text-cyan",
-    headline: "Understand the trader behind the trades.",
-    body: "Your biggest losses usually aren't strategy — they're emotion. Tag your mood, score your discipline, and watch TradeBoard correlate your mindset to your actual P&L. See your FOMO, revenge trades, and overconfidence in cold, hard numbers.",
-    points: [
-      "Post-trade mood, reflection notes & emotion tags",
-      "Daily discipline score (A / B / C / D)",
-      "Mood-to-P&L correlation charts",
-      "Encrypted, private, deletable anytime",
-    ],
-    img: "/feature-psychology.png",
-    edge: "TraderSync & Tradervue don't track this at all.",
-  },
-  {
-    tag: "Historical CSV Import",
-    icon: Plug,
-    color: "text-gold",
-    headline: "Start with historical trades.",
-    body: "Initial invited testing accepts one validated CSV trade-history format. Direct broker syncing and additional import formats are separate future work requiring approval and certification.",
-    points: [
-      "Manual trade-history import in invited testing",
-      "One validated CSV format initially",
-      "Historical trade review in one workspace",
-      "Additional formats require certification",
-    ],
-    img: "/hero-dashboard.png",
-    edge: "Initial scope is intentionally narrow and read-only.",
-  },
-  {
-    tag: "Web-first Product Roadmap",
-    icon: Monitor,
-    color: "text-green",
-    headline: "A focused web experience first.",
-    body: "The browser interface is being refined for invited access. Native desktop and mobile apps are longer-term roadmap work; they are not available in the first release.",
-    points: [
-      "Web experience prioritized for invited release",
-      "Native iOS and Android apps not yet released",
-      "No live broker synchronization in first release",
-      "Availability depends on future feature certification",
-    ],
-    img: "/feature-devices.png",
-    edge: "Launch readiness takes priority over platform breadth.",
-  },
-  {
-    tag: "Trade Tagging & Playbooks",
-    icon: Tags,
-    color: "text-blue",
-    headline: "Build your system. Track your setups.",
-    body: "Create named playbooks for every strategy you trade — breakouts, reversals, earnings plays, whatever you run. Tag every trade to a playbook and watch TradeBoard show you exactly which setups are working and which are costing you.",
-    points: [
-      "Unlimited playbooks (Pro & Pro+)",
-      "Tag any trade to a setup type",
-      "Per-playbook win rate, P&L, and expectancy",
-      "Compare setups side by side",
-    ],
-    img: "/feature-replay.png",
-    edge: "Tradervue limits setups. TraderSync doesn't do per-playbook analytics.",
-  },
-  {
-    tag: "Correlation Analysis",
-    icon: BarChart3,
-    color: "text-cyan",
-    headline: "Find the patterns others miss.",
-    body: "TradeBoard runs deep correlation across every dimension of your trading — time of day, day of week, hold duration, position size, sector, mood, and more. Stop guessing what's working. Now you'll know.",
-    points: [
-      "Win rate by time of day & day of week",
-      "P&L vs position size correlation",
-      "Sector & symbol performance breakdown",
-      "Mood vs P&L correlation (Psychology tier)",
-    ],
-    img: "/feature-psychology.png",
-    edge: "No competitor combines behavioral + performance correlation in one view.",
-  },
-  {
-    tag: "Monthly & Weekly Summaries",
-    icon: CalendarDays,
-    color: "text-gold",
-    headline: "Zoom out. See the full picture.",
-    body: "Auto-generated weekly and monthly summary reports break down your performance across every metric that matters — P&L, win rate, best/worst days, streak data, and consistency scores. Ready to review every Sunday or month-end.",
-    points: [
-      "Auto-generated weekly & monthly reports",
-      "Streak tracking — wins, losses, consistency",
-      "Best & worst day / week / month",
-      "Exportable as PDF or CSV",
-    ],
-    img: "/hero-dashboard.png",
-    edge: "Most competitors require you to build this manually.",
-  },
-  {
-    tag: "PDF & CSV Export",
-    icon: FileDown,
-    color: "text-green",
-    headline: "Your data, your format.",
-    body: "Every chart page has a one-click export — grab a PNG of any chart or pull a full CSV of your trade data. Share your performance, file taxes, or run your own analysis. No locked-in data, ever.",
-    points: [
-      "PNG chart export on every dashboard page",
-      "Full CSV data export anytime",
-      "PDF summary reports (monthly & weekly)",
-      "Tax report with wash sale flagging (Pro+)",
-    ],
-    img: "/feature-devices.png",
-    edge: "TraderSync charges extra. Tradervue limits CSV exports on lower tiers.",
-  },
+  { tag: "Historical CSV Import", icon: Plug, color: "text-gold", headline: "Start with historical trades.", body: "The invited release is limited to one validated Webull CSV format for USD equity fills. Preview and confirm historical records; no broker login or automatic sync is involved.", points: ["A specific CSV schema, not every export", "USD equities only in the initial scope", "Preview before confirmation", "Additional formats require certification"], img: "/hero-dashboard.png" },
+  { tag: "Trading Journal", icon: Tags, color: "text-blue", headline: "Put past decisions in context.", body: "The application includes a private, text-based journal for historical trade review. Approved screenshots and a walkthrough will be added after final UI acceptance.", points: ["Retrospective notes", "Journal walkthrough awaiting UI approval", "No screenshot uploads in the initial release", "No plan entitlements promised"], img: "/feature-replay.png" },
+  { tag: "Historical Performance", icon: BarChart3, color: "text-cyan", headline: "Review completed activity.", body: "Historical execution review and FIFO analytics are in the invited scope. Broader dashboards, reports and comparisons remain outside that release.", points: ["Review completed equity fills", "Historical FIFO calculations", "Not tax reporting or tax advice", "Advanced analytics require separate validation"], img: "/hero-dashboard.png" },
+  { tag: "Trade Replay \u2014 Roadmap", icon: Play, color: "text-blue", headline: "A possible way to revisit past trades.", body: "Replay is disabled in the first invited release. The existing illustration is a design concept, not an available playback tool.", points: ["Planned historical playback", "No predictive entries or exits", "Market-data dependencies require validation", "No release date promised"], img: "/feature-replay.png" },
+  { tag: "Psychology \u2014 Roadmap", icon: Brain, color: "text-cyan", headline: "Reflect on your trading habits.", body: "Dedicated psychology scoring and correlation tools are outside the first invited release. Their availability and data handling require separate review.", points: ["Optional retrospective reflection concept", "No certified mood-to-performance charts", "No blanket encryption or deletion guarantees", "No subscription inclusion promised"], img: "/feature-psychology.png" },
+  { tag: "Web-first Experience", icon: Monitor, color: "text-green", headline: "A focused browser experience first.", body: "The web interface is being refined for invited access. Native desktop and mobile applications are future possibilities.", points: ["Web experience first", "No released native mobile apps", "No live brokerage balances", "Final UI acceptance remains pending"], img: "/feature-devices.png" },
 ];
 
 export default function Features() {
@@ -178,7 +62,7 @@ export default function Features() {
           >
             <Zap size={14} />
             <Link to="/pricing" className="hover:underline">
-              Founding Member pricing available — lock in Pro at $199/yr for life. First 100 spots available.
+              Planned Founding Member offer: $199/year for the first 100 paid subscribers. Checkout closed.
             </Link>
           </motion.div>
         </div>
@@ -210,7 +94,7 @@ export default function Features() {
                 ))}
               </ul>
               <div className="mt-6 inline-block text-xs text-gold bg-gold/10 border border-gold/20 rounded-lg px-3 py-2">
-                Roadmap concept — availability subject to certification
+                Illustrative image — not an application screenshot
               </div>
             </Reveal>
 
@@ -237,7 +121,7 @@ export default function Features() {
                 Ready to trade smarter?
               </h2>
               <p className="text-text-muted mt-4 max-w-md mx-auto">
-                Start free. Upgrade when you're ready. Cancel anytime.
+                Join the waitlist for verified launch details. Billing and signup are not open.
               </p>
               <Link
                 to="/pricing"

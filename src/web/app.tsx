@@ -7,6 +7,7 @@ import Charts from "./pages/charts";
 import Login from "./pages/login";
 import ComingSoon from "./pages/coming-soon";
 import PreviewGate from "./pages/preview-gate";
+import LegalStatus from "./pages/legal-status";
 import { Nav } from "./components/nav";
 import { Footer } from "./components/footer";
 import { Provider } from "./components/provider";
@@ -21,7 +22,7 @@ function ScrollToTop() {
   return null;
 }
 
-// Wrapper: redirects to /preview if not unlocked
+// Editorial convenience only. Client storage does not authenticate or protect private material.
 function Protected({ component: Component }: { component: React.ComponentType }) {
   if (!isPreviewUnlocked()) {
     return <Redirect to="/preview" />;
@@ -56,6 +57,9 @@ function App() {
             <ComingSoon />
           )}
         </Route>
+
+        <Route path="/waitlist" component={ComingSoon} />
+        <Route path="/legal-status" component={LegalStatus} />
 
         {/* Password gate */}
         <Route path="/preview" component={PreviewGate} />

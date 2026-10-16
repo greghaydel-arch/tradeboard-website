@@ -100,11 +100,11 @@ export function PrivacyPolicy() {
 
       <h2>1. Information We Collect</h2>
       <ul>
-        <li>Account information: name, email address, password (hashed).</li>
+        <li>Account and identity information: profile details, invitation and acceptance records, and external identity-provider identifiers. The invited flow uses provider-backed email authentication; a local password-account description is inaccurate.</li>
         <li>Historical trade records you choose to submit through the approved CSV import workflow.</li>
-        <li>Psychology &amp; journal data: mood tags, reflection notes, discipline scores you choose to enter.</li>
+        <li>Private journal text and draft records you choose to enter. Dedicated psychology collection is disabled in the first release.</li>
         <li>Usage data: pages visited, features used, device/browser information.</li>
-        <li>Payment data: processed by our third-party payment processor — we do not store full card numbers.</li>
+        <li>Billing routes are disabled for the first invited release. Any later payment processing requires approved provider disclosures and terms.</li>
       </ul>
 
       <h2>2. How We Use Your Information</h2>
@@ -128,8 +128,8 @@ export function PrivacyPolicy() {
 
       <h2>5. Psychology Data</h2>
       <p>
-        Mood, reflection, and discipline data is encrypted at rest, never sold or shared with third parties, and can be deleted independently of
-        your other account data at any time from Settings.
+        Private journal text is stored by the application and its hosting/database providers. Dedicated psychology tools are disabled.
+        Field-level encryption, independent deletion controls, provider retention and backup behavior must not be promised without verification.
       </p>
 
       <h2>6. Data Sharing</h2>
@@ -140,8 +140,8 @@ export function PrivacyPolicy() {
 
       <h2>7. Data Retention &amp; Deletion</h2>
       <p>
-        You may request deletion of your account and associated data at any time by contacting privacy@trade-board.net. We retain data only as long
-        as necessary to provide the service or as required by law.
+        The application has an asynchronous account-deletion workflow, privacy exports, cleanup retries and restore-suppression records.
+        Immediate erasure of all provider copies and backups is not established. Category-specific retention, lawful exceptions and contact ownership require approval before publication.
       </p>
 
       <h2>8. Security</h2>
