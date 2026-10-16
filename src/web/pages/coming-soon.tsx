@@ -55,12 +55,7 @@ export default function ComingSoon() {
 
         {/* The existing Cajun AI / TradeBoard Zoho waitlist is the single signup destination.
             Embedded for convenience; the direct link remains usable if third-party iframes are blocked. */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.26 }}
-          className="w-full"
-        >
+        <div className="w-full">
           <div className="rounded-xl border border-tb-border bg-bg-card overflow-hidden">
             <iframe
               title="TradeBoard Waitlist Signup"
@@ -78,7 +73,7 @@ export default function ComingSoon() {
           >
             Trouble viewing the form? Open the waitlist <ArrowRight size={16} aria-hidden="true" />
           </a>
-        </motion.div>
+        </div>
 
         <p className="text-sm text-text-muted mt-4">This form is provided by Zoho. Confirm submission in the form; joining does not create an account, reserve a Founding Member place, or start a paid subscription.</p>
         <p className="mt-4"><a className="text-cyan underline" href="https://cajun-ai.com/pages/youtube.html#tradeboard">TradeBoard by Cajun AI — planned tutorials</a></p>
