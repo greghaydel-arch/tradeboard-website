@@ -1,2 +1,2 @@
-# Cloudflare Pages supplies native SPA fallback when no root 404.html exists.
-# A catch-all rewrite to /index.html loops under Pages HTML URL normalization.
+# Public routes are physical directories with index.html.
+# No catch-all rewrite; unknown and review routes must return 404.
