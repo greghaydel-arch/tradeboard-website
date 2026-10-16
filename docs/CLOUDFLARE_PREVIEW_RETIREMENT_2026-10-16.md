@@ -83,3 +83,8 @@ Reference: [branch deployment controls](https://developers.cloudflare.com/pages/
 - `32dbb3ee-dae2-4508-a0b9-eeaacdbad344` — `main`, source `40c1942fd1bdac0eac2ccb2e1e8af7f94e6a67ef`; PRESERVE.
 - `dcc4a904-fece-4998-9486-bf53d1ac91ab` — `main`, source `7d813f271f957f43a7d4f9822098dc24318d0216`; PRESERVE.
 - `05b261d5-9cc0-4dca-91ec-0f1e7c087dc3` — `main`, source `355ccabe52e4d6ff23574df0c3343545fb6eb8ba`; PRESERVE.
+
+
+## Subsequent approved None-setting completion
+
+The owner subsequently authorized only automatic preview disablement. Both projects now persist Preview branch deployments = None, production main and automatic production deployments enabled. Three production custom domains remain Active/SSL enabled and publicly accessible. All 38 historical preview hash URLs and both aliases still return Access redirects. History totals remain 62/24; no deployment was deleted and no Access policy or billing setting was changed. The earlier inventory/retirement proposal remains historical and confers no deletion authorization. See the final owner-approved automatic preview disablement section of [the main validation report](WEBSITE_RELEASE_VALIDATION_2026-10-16.md) for exact before/after settings and test times. `REVIEW_PENDING_CHATGPT`.
