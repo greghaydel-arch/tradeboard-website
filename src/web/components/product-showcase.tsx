@@ -48,7 +48,7 @@ export function ProductShowcase() {
           </article>
         ))}
       </div>
-      <a href="https://cajun-ai.com/pages/youtube.html#tradeboard" className="inline-block text-cyan underline mt-6">Visit the Cajun AI tutorial hub</a>
+      <a href="https://cajun-ai.com/pages/youtube.html" className="inline-block text-cyan underline mt-6">Visit the Cajun AI tutorial hub</a>
     </section>
   );
 }

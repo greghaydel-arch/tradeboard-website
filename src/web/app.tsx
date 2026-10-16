@@ -11,7 +11,6 @@ import LegalStatus from "./pages/legal-status";
 import { Nav } from "./components/nav";
 import { Footer } from "./components/footer";
 import { Provider } from "./components/provider";
-import { AgentFeedback } from "@runablehq/website-runtime";
 import { isPreviewUnlocked } from "./lib/preview-auth";
 
 function ScrollToTop() {
@@ -91,7 +90,6 @@ function App() {
           )}
         </Route>
       </Switch>
-      {import.meta.env.DEV && <AgentFeedback />}
     </Provider>
   );
 }

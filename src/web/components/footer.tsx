@@ -28,7 +28,7 @@ export function Footer() {
               <li><Link to="/features" className="text-text-muted hover:text-text transition-colors">Features</Link></li>
               <li><Link to="/pricing" className="text-text-muted hover:text-text transition-colors">Pricing</Link></li>
               <li><Link to="/charts" className="text-text-muted hover:text-text transition-colors">Charts & Data</Link></li>
-              <li><a href="https://cajun-ai.com/pages/youtube.html#tradeboard" className="text-text-muted hover:text-text transition-colors">App tutorials (planned)</a></li>
+              <li><a href="https://cajun-ai.com/pages/youtube.html" className="text-text-muted hover:text-text transition-colors">App tutorials (planned)</a></li>
               <li><Link to="/login" className="text-text-muted hover:text-text transition-colors">Access status</Link></li>
             </ul>
           </div>

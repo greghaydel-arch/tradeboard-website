@@ -56,12 +56,22 @@ export default function ComingSoon() {
         {/* The existing Cajun AI / TradeBoard Zoho waitlist is the single signup destination.
             Embedded for convenience; the direct link remains usable if third-party iframes are blocked. */}
         <div className="w-full">
+          <a
+            href="https://forms.zohopublic.com/greghaydelgm1/form/TradeBoardWaitlist/formperma/ZesK-fk6NxQJBtB0a818KwRQSZhoyC8ThdQ-Co-J8Wc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue text-white font-semibold hover:bg-blue/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan mb-4"
+          >
+            Join the TradeBoard waitlist (new tab) <ArrowRight size={18} aria-hidden="true" />
+          </a>
+          <p className="text-sm text-text-muted mb-4">Opens Zoho Forms. The optional embedded form below also connects to Zoho. Review the form's notices before submitting. Joining does not guarantee a price or reserve a Founding Member place.</p>
           <div className="rounded-xl border border-tb-border bg-bg-card overflow-hidden">
             <iframe
               title="TradeBoard Waitlist Signup"
               aria-label="TradeBoard Waitlist Signup"
               src="https://forms.zohopublic.com/greghaydelgm1/form/TradeBoardWaitlist/formperma/ZesK-fk6NxQJBtB0a818KwRQSZhoyC8ThdQ-Co-J8Wc"
               className="w-full h-[520px] border-0"
+              referrerPolicy="no-referrer"
               loading="eager"
             />
           </div>
@@ -76,7 +86,7 @@ export default function ComingSoon() {
         </div>
 
         <p className="text-sm text-text-muted mt-4">This form is provided by Zoho. Confirm submission in the form; joining does not create an account, reserve a Founding Member place, or start a paid subscription.</p>
-        <p className="mt-4"><a className="text-cyan underline" href="https://cajun-ai.com/pages/youtube.html#tradeboard">TradeBoard by Cajun AI — planned tutorials</a></p>
+        <p className="mt-4"><a className="text-cyan underline" href="https://cajun-ai.com/pages/youtube.html">TradeBoard by Cajun AI — planned tutorials</a></p>
 
         {/* Feature hints */}
         <motion.div

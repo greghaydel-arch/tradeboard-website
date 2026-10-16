@@ -69,7 +69,7 @@ export function Nav() {
               {l.label}
             </Link>
           ))}
-          <a href="https://cajun-ai.com/pages/youtube.html#tradeboard" className="px-4 py-2 text-sm rounded-lg text-text-muted hover:text-text transition-colors">Tutorials</a>
+          <a href="https://cajun-ai.com/pages/youtube.html" className="px-4 py-2 text-sm rounded-lg text-text-muted hover:text-text transition-colors">Tutorials</a>
         </div>
 
         <div className="hidden md:flex items-center gap-3">
@@ -115,7 +115,7 @@ export function Nav() {
               {l.label}
             </Link>
           ))}
-          <a href="https://cajun-ai.com/pages/youtube.html#tradeboard" className="px-3 py-2.5 text-sm text-text-muted hover:text-text rounded-lg" onClick={() => setOpen(false)}>Tutorials</a>
+          <a href="https://cajun-ai.com/pages/youtube.html" className="px-3 py-2.5 text-sm text-text-muted hover:text-text rounded-lg" onClick={() => setOpen(false)}>Tutorials</a>
           <Link
             to="/pricing"
             onClick={() => setOpen(false)}
