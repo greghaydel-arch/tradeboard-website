@@ -117,7 +117,7 @@ export default function PublicApp() {
     <a href="#main-content" className="skip-link">Skip to main content</a>
     <header className="release-nav">
       <a className="release-brand" href="/">
-        <img src="/logo-candlestick.png" alt="" />TradeBoard</a>
+        <img src="/brand-mark.png" alt="" />TradeBoard</a>
       <nav aria-label="Main navigation">{[["/features/", "Product"], ["/pricing/", "Plans"], ["/waitlist/", "Waitlist"]].map(([href, label]) => <a key={href} href={href} aria-current={(location.replace(/\/$/, "") || "/") === (href.replace(/\/$/, "") || "/") ? "page" : undefined}>{label}</a>)}</nav>
     </header>
     <Switch>

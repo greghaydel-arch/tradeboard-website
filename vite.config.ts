@@ -5,7 +5,7 @@ import path from "path";
 import fs from "node:fs";
 import { publicTitles } from "./src/web/public-routes";
 
-const publicAssets = ["favicon.ico", "logo-candlestick.png", "tradeboard_icon_final.png", "android-chrome-192x192.png", "android-chrome-512x512.png", "_headers", "_redirects", "404.html"];
+const publicAssets = ["favicon.ico", "brand-mark.png", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "_headers", "_redirects", "404.html"];
 
 export default defineConfig(({ mode, command }) => {
   const review = mode === "review";
@@ -19,11 +19,12 @@ export default defineConfig(({ mode, command }) => {
       name: "allowlisted-public-assets",
       transformIndexHtml: {
         order: "pre", handler(html) {
+          html = html.replace(/\r\n?/g, "\n");
           return review ? html.replace("/src/web/main.tsx", "/src/web/review-main.tsx") : html;
         }
       },
       generateBundle() {
-        const assets = review ? [...publicAssets, "feature-broker.png", "feature-devices.png", "feature-psychology.png", "feature-replay.png", "hero-dashboard.png", "og-image.png"] : publicAssets;
+        const assets = review ? [...publicAssets, "logo-candlestick.png", "tradeboard_icon_final.png", "android-chrome-192x192.png", "android-chrome-512x512.png", "feature-broker.png", "feature-devices.png", "feature-psychology.png", "feature-replay.png", "hero-dashboard.png", "og-image.png"] : publicAssets;
         for(const fileName of assets) {
           const source = path.resolve(__dirname, "public", fileName);
           if(fs.lstatSync(source).isSymbolicLink() || !fs.realpathSync(source).startsWith(fs.realpathSync(path.resolve(__dirname, "public")) + path.sep)) throw new Error("Unsafe public asset");

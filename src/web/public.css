@@ -35,3 +35,8 @@
 .release-footer a { color:#d7e2f0; text-decoration:underline; }
 @media(max-width:900px) { .release-plans { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:600px) { .release-nav { flex-direction:column; gap:14px; padding:18px 20px; } .release-nav nav { gap:32px; } .release-nav nav a { padding:8px 0; } .release-main { padding:0 20px 40px; } .release-hero { padding:42px 0 32px; } .release-hero h1 { font-size:clamp(1.7rem,8vw,2.5rem); line-height:1.18; } .release-grid,.release-plans { grid-template-columns:1fr; } .release-grid article,.release-plans article,.waitlist-panel { padding:24px 20px; } .release-actions { align-items:stretch; flex-direction:column; } }
+
+/* Brighter brand accents keep copy and keyboard focus readable. */
+.release-main .gradient-text { background-image:linear-gradient(135deg,#60a5fa,#22d3ee); }
+:focus-visible { outline:3px solid #67e8f9; outline-offset:4px; }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
