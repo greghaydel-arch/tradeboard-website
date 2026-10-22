@@ -5,7 +5,7 @@ import path from "path";
 import fs from "node:fs";
 import { publicTitles } from "./src/web/public-routes";
 
-const publicAssets = ["favicon.ico", "brand-mark.png", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "_headers", "_redirects", "404.html"];
+const publicAssets = ["favicon.ico", "brand-mark.png", "brand-mark-96.png", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "_headers", "_redirects", "404.html"];
 
 export default defineConfig(({ mode, command }) => {
   const review = mode === "review";

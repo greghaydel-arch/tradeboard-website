@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const dist=path.join(root,'dist');
 const files=fs.readdirSync(dist,{recursive:true}).filter(f=>fs.statSync(path.join(dist,f)).isFile()).map(f=>f.replaceAll('\\','/'));
-const fixed=['index.html','404.html','_headers','_redirects','favicon.ico','brand-mark.png','apple-touch-icon.png','icon-192.png','icon-512.png','features/index.html','pricing/index.html','waitlist/index.html','legal-status/index.html'];
+const fixed=['index.html','404.html','_headers','_redirects','favicon.ico','brand-mark.png','brand-mark-96.png','apple-touch-icon.png','icon-192.png','icon-512.png','features/index.html','pricing/index.html','waitlist/index.html','legal-status/index.html'];
 const generated=files.filter(f=>/^assets\/index-[\w-]+\.(js|css)$/.test(f));
 assert.equal(generated.length,2);
 assert.deepEqual([...files].sort(),[...fixed,...generated].sort());
@@ -31,7 +31,7 @@ assert(!fs.readFileSync(path.join(dist,'_redirects'),'utf8').includes('/* /index
 assert(fs.readFileSync(path.join(dist,'_headers'),'utf8').includes('X-Robots-Tag: noindex, nofollow'));
 console.log(JSON.stringify({status:'PASS',files:files.length,checks:['exact output allowlist','private preview and draft exclusion','single Zoho destination','canonical route documents','noindex and noscript','asset links','no catch-all redirect']},null,2));
 
-for(const [name,size] of [['apple-touch-icon.png',180],['icon-192.png',192],['icon-512.png',512],['brand-mark.png',512]]) {
+for(const [name,size] of [['apple-touch-icon.png',180],['icon-192.png',192],['icon-512.png',512],['brand-mark.png',512],['brand-mark-96.png',96]]) {
  const png=fs.readFileSync(path.join(dist,name));assert.equal(png.readUInt32BE(16),size);assert.equal(png.readUInt32BE(20),size);
  assert(png.length<250000,`Unnecessarily large icon: ${name}`);
 }

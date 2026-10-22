@@ -48,7 +48,7 @@ function Home() {
       <p>Review completed trades, document your decisions and build a more consistent review routine. TradeBoard by Cajun AI is preparing for invited access.</p>
       <div className="release-actions">
         <a className="release-button" href="/waitlist/">Join the launch waitlist →</a>
-        <a className="release-secondary" href="/pricing/">Explore planned pricing</a>
+        <a className="release-secondary" href="/features/">Explore the product</a>
       </div>
     </section>
     <Product />
@@ -67,6 +67,7 @@ function Features() {
         <span className="gradient-text">Learn from your process.</span>
       </h1>
       <p>Historical trading analytics, journaling and education. No automated execution, brokerage service or individualized investment advice.</p>
+      <div className="release-actions"><a className="release-button" href="/waitlist/">Join the launch waitlist →</a><a className="release-secondary" href="/pricing/">Explore planned pricing</a></div>
     </section>
     <Product />
     <section className="release-callout">
@@ -117,7 +118,7 @@ export default function PublicApp() {
     <a href="#main-content" className="skip-link">Skip to main content</a>
     <header className="release-nav">
       <a className="release-brand" href="/">
-        <img src="/brand-mark.png" alt="" />TradeBoard</a>
+        <img src="/brand-mark-96.png" width="32" height="32" alt="" />TradeBoard</a>
       <nav aria-label="Main navigation">{[["/features/", "Product"], ["/pricing/", "Plans"], ["/waitlist/", "Waitlist"]].map(([href, label]) => <a key={href} href={href} aria-current={(location.replace(/\/$/, "") || "/") === (href.replace(/\/$/, "") || "/") ? "page" : undefined}>{label}</a>)}</nav>
     </header>
     <Switch>
