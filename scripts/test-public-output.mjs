@@ -36,3 +36,5 @@ for(const [name,size] of [['apple-touch-icon.png',180],['icon-192.png',192],['ic
  assert(png.length<250000,`Unnecessarily large icon: ${name}`);
 }
 assert(js.includes('Close embedded form'));
+const headers=fs.readFileSync(path.join(dist,'_headers'),'utf8');
+for(const value of ["object-src 'none'", "base-uri 'self'", "frame-ancestors 'none'", 'frame-src https://forms.zohopublic.com']) assert(headers.includes(value));
