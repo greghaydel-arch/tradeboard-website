@@ -1,5 +1,8 @@
 # TradeBoard marketing review build
 
+See [the October 22 completion report](docs/WEBSITE_COMPLETION_2026-10-22.md)
+and [the indexing proposal](docs/INDEXING_ROLLOUT_2026-10-22.md) before any release action.
+
 This repository builds a static marketing website. The TradeBoard application is
 separate. Account registration and checkout remain closed.
 

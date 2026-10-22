@@ -3,7 +3,7 @@ import { Route, Switch, useLocation } from "wouter";
 import Waitlist from "./components/waitlist";
 import LegalStatus from "./pages/legal-status";
 import "./public.css";
-import { publicTitles as titles } from "./public-routes";
+import { publicTitles as titles, publicDescriptions } from "./public-routes";
 
 function Metadata() {
   const [location] = useLocation();
@@ -15,6 +15,9 @@ function Metadata() {
       if(element) element.setAttribute(element.tagName === "LINK" ? "href" : "content", `https://trade-board.net${route === "/" ? "/" : route + "/"}`);
     }
     document.querySelector('meta[property="og:title"]')?.setAttribute("content", document.title);
+    for(const selector of ['meta[name="description"]', 'meta[property="og:description"]']) {
+      document.querySelector(selector)?.setAttribute("content", publicDescriptions[route] || "This page is not part of the public TradeBoard website.");
+    }
     window.scrollTo(0, 0);
   }, [location]);
   return null;

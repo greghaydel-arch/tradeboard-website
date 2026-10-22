@@ -18,15 +18,22 @@ assert(js.includes('successfully paid Founding Members'));
 assert(js.includes('no-referrer'));
 const forms=[...js.matchAll(/https:\/\/forms\.zohopublic\.com\/[^"\s]+/g)].map(m=>m[0]);
 assert.equal(new Set(forms).size,1);
+const descriptions=new Set();
 for(const route of ['','features/','pricing/','waitlist/','legal-status/']) {
  const html=fs.readFileSync(path.join(dist,route,'index.html'),'utf8');
  assert(html.includes(`href="https://trade-board.net/${route}"`),`Canonical ${route}`);
  assert(html.includes('noindex, nofollow'));
+ descriptions.add(html.match(/<meta name="description" content="([^"]+)"/)[1]);
+ const schema=JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+ assert.equal(schema['@type'],'WebSite');
+ assert.equal(schema.url,'https://trade-board.net/','Site identity must not become a page URL');
+ assert(!html.includes('"offers"')&&!html.includes('"aggregateRating"'));
  assert(html.includes('<noscript>'));
  assert(!html.includes('\r'),'Deterministic LF route output');
  assert(!/[\u00c2\u00c3]|\u00e2[\u20ac\u2020]/.test(html),'UTF-8 metadata must not be double encoded');
  for(const [,asset] of html.matchAll(/(?:src|href)="(\/[^"#]+)"/g)) assert(fs.existsSync(path.join(dist,asset)),`Missing asset ${asset}`);
 }
+assert.equal(descriptions.size,5,'Each public route must describe its own purpose');
 assert(!fs.readFileSync(path.join(dist,'_redirects'),'utf8').includes('/* /index'));
 assert(fs.readFileSync(path.join(dist,'_headers'),'utf8').includes('X-Robots-Tag: noindex, nofollow'));
 console.log(JSON.stringify({status:'PASS',files:files.length,checks:['exact output allowlist','private preview and draft exclusion','single Zoho destination','canonical route documents','noindex and noscript','asset links','no catch-all redirect']},null,2));

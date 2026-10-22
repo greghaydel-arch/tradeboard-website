@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import tailwind from "@tailwindcss/vite";
 import path from "path";
 import fs from "node:fs";
-import { publicTitles } from "./src/web/public-routes";
+import { publicTitles, publicDescriptions } from "./src/web/public-routes";
 
 const publicAssets = ["favicon.ico", "brand-mark.png", "brand-mark-96.png", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "_headers", "_redirects", "404.html"];
 
@@ -41,10 +41,14 @@ export default defineConfig(({ mode, command }) => {
           const destination = path.join(output, route === "/" ? "" : route.slice(1));
           fs.mkdirSync(destination, { recursive: true });
           const escaped = `TradeBoard — ${title}`.replaceAll("&", "&amp;");
+          const description = publicDescriptions[route].replaceAll("&", "&amp;").replaceAll('"', '&quot;');
           fs.writeFileSync(path.join(destination, "index.html"), html
             .replace(/<title>.*?<\/title>/, `<title>${escaped}</title>`)
             .replace(/(<meta property="og:title" content=")[^"]+/, `$1${escaped}`)
-            .replaceAll('https://trade-board.net/"', `https://trade-board.net${route === "/" ? "/" : route + "/"}"`));
+            .replace(/(<meta name="description" content=")[^"]+/, (_match, prefix) => prefix + description)
+            .replace(/(<meta property="og:description" content=")[^"]+/, (_match, prefix) => prefix + description)
+            .replace(/(<link rel="canonical" href=")[^"]+/, `$1https://trade-board.net${route === "/" ? "/" : route + "/"}`)
+            .replace(/(<meta property="og:url" content=")[^"]+/, `$1https://trade-board.net${route === "/" ? "/" : route + "/"}`));
         }
       },
     }],
