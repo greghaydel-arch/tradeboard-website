@@ -1,39 +1,9 @@
-import { useState } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function ComingSoon() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email) return;
-    setLoading(true);
-    setError("");
-
-    try {
-      const res = await fetch("https://formspree.io/f/REPLACE_WITH_YOUR_ID", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      if (res.ok) {
-        setSubmitted(true);
-      } else {
-        setError("Something went wrong. Try again.");
-      }
-    } catch {
-      setError("Something went wrong. Try again.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
   return (
-    <main className="min-h-screen bg-bg flex flex-col items-center justify-center px-5 relative overflow-hidden">
+    <main id="main-content" tabIndex={-1} className="py-12 min-h-screen bg-bg flex flex-col items-center justify-center px-5 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-blue/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-cyan/8 rounded-full blur-[120px] pointer-events-none" />
@@ -79,43 +49,44 @@ export default function ComingSoon() {
           transition={{ delay: 0.2 }}
           className="text-text-muted text-lg leading-relaxed mb-10"
         >
-          A professional trading journal and analytics platform built for serious retail traders.
-          Multi-broker, psychology tracking, trade replay — one dashboard.
+          A historical trading journal and performance review platform for retail traders.
+          The initial invited scope is one validated Webull CSV format for USD equity fills. Direct broker connections are not enabled.
         </motion.p>
 
-        {/* Email form */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.26 }}
-        >
-          {submitted ? (
-            <div className="flex items-center justify-center gap-3 bg-green-500/10 border border-green-500/30 text-green-400 rounded-xl px-6 py-4 font-medium">
-              <CheckCircle size={20} />
-              You're on the list — we'll reach out when we launch.
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                required
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-bg-elevated border border-tb-border rounded-xl px-5 py-3.5 text-text placeholder:text-text-muted focus:outline-none focus:border-blue transition-colors"
-              />
-              <button
-                type="submit"
-                disabled={loading}
-                className="flex items-center justify-center gap-2 bg-blue hover:bg-blue/90 text-white font-semibold px-6 py-3.5 rounded-xl transition-all whitespace-nowrap disabled:opacity-60"
-              >
-                {loading ? "Sending..." : "Get Early Access"}
-                {!loading && <ArrowRight size={16} />}
-              </button>
-            </form>
-          )}
-          {error && <p className="text-red-400 text-sm mt-3">{error}</p>}
-        </motion.div>
+        {/* The existing Cajun AI / TradeBoard Zoho waitlist is the single signup destination.
+            Embedded for convenience; the direct link remains usable if third-party iframes are blocked. */}
+        <div className="w-full">
+          <a
+            href="https://forms.zohopublic.com/greghaydelgm1/form/TradeBoardWaitlist/formperma/ZesK-fk6NxQJBtB0a818KwRQSZhoyC8ThdQ-Co-J8Wc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue text-white font-semibold hover:bg-blue/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan mb-4"
+          >
+            Join the TradeBoard waitlist (new tab) <ArrowRight size={18} aria-hidden="true" />
+          </a>
+          <p className="text-sm text-text-muted mb-4">Opens Zoho Forms. The optional embedded form below also connects to Zoho. Review the form's notices before submitting. Joining does not guarantee a price or reserve a Founding Member place.</p>
+          <div className="rounded-xl border border-tb-border bg-bg-card overflow-hidden">
+            <iframe
+              title="TradeBoard Waitlist Signup"
+              aria-label="TradeBoard Waitlist Signup"
+              src="https://forms.zohopublic.com/greghaydelgm1/form/TradeBoardWaitlist/formperma/ZesK-fk6NxQJBtB0a818KwRQSZhoyC8ThdQ-Co-J8Wc"
+              className="w-full h-[520px] border-0"
+              referrerPolicy="no-referrer"
+              loading="eager"
+            />
+          </div>
+          <a
+            href="https://forms.zohopublic.com/greghaydelgm1/form/TradeBoardWaitlist/formperma/ZesK-fk6NxQJBtB0a818KwRQSZhoyC8ThdQ-Co-J8Wc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-cyan hover:text-blue mt-3"
+          >
+            Trouble viewing the form? Open the waitlist <ArrowRight size={16} aria-hidden="true" />
+          </a>
+        </div>
+
+        <p className="text-sm text-text-muted mt-4">This form is provided by Zoho. Confirm submission in the form; joining does not create an account, reserve a Founding Member place, or start a paid subscription.</p>
+        <p className="mt-4"><a className="text-cyan underline" href="https://cajun-ai.com/pages/youtube.html">TradeBoard by Cajun AI — planned tutorials</a></p>
 
         {/* Feature hints */}
         <motion.div
@@ -124,7 +95,7 @@ export default function ComingSoon() {
           transition={{ delay: 0.4 }}
           className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-10 text-text-muted text-sm"
         >
-          {["Multi-broker support", "Psychology & mood tracking", "Trade Replay", "AI Trade Coach", "Desktop + Mobile"].map((f) => (
+          {["Historical performance review", "Trading journal", "CSV import for invited testing", "Education-first", "More features planned"].map((f) => (
             <span key={f} className="flex items-center gap-1.5">
               <span className="w-1 h-1 rounded-full bg-cyan" />
               {f}
@@ -138,7 +109,7 @@ export default function ComingSoon() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
-        className="absolute bottom-6 text-center text-text-muted text-xs"
+        className="relative mt-12 px-5 text-center text-text-muted text-xs"
       >
         <p>© 2026 Cajun AI LLC. All rights reserved. TradeBoard is a product of Cajun AI LLC.</p>
       </motion.div>

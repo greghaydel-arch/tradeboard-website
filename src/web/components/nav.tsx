@@ -20,6 +20,15 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setOpen(false); document.querySelector<HTMLButtonElement>('[aria-controls="mobile-menu"]')?.focus(); }
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [open]);
+
   if (location === "/login" || location === "/preview") return null;
 
   return (
@@ -60,6 +69,7 @@ export function Nav() {
               {l.label}
             </Link>
           ))}
+          <a href="https://cajun-ai.com/pages/youtube.html" className="px-4 py-2 text-sm rounded-lg text-text-muted hover:text-text transition-colors">Tutorials</a>
         </div>
 
         <div className="hidden md:flex items-center gap-3">
@@ -67,19 +77,20 @@ export function Nav() {
             to="/login"
             className="text-sm text-text-muted hover:text-text transition-colors"
           >
-            Log in
+            Access status
           </Link>
           <Link
             to="/pricing"
             className="gradient-btn text-white text-sm font-semibold px-4 py-2 rounded-lg transition-shadow"
           >
-            Start Free
+            Preview Plans
           </Link>
         </div>
 
         <button
           className="md:hidden text-text"
           onClick={() => setOpen(!open)}
+          onKeyDown={(event) => { if (event.key === "Escape") setOpen(false); }}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -104,12 +115,13 @@ export function Nav() {
               {l.label}
             </Link>
           ))}
+          <a href="https://cajun-ai.com/pages/youtube.html" className="px-3 py-2.5 text-sm text-text-muted hover:text-text rounded-lg" onClick={() => setOpen(false)}>Tutorials</a>
           <Link
             to="/pricing"
             onClick={() => setOpen(false)}
             className="gradient-btn text-white text-sm font-semibold px-4 py-2.5 rounded-lg text-center mt-2"
           >
-            Start Free
+            Preview Plans
           </Link>
         </div>
       )}

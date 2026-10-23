@@ -1,1 +1,2 @@
-/*    /index.html   200
+# Public routes are physical directories with index.html.
+# No catch-all rewrite; unknown and review routes must return 404.

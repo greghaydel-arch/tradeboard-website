@@ -7,37 +7,30 @@ const gallery = [
   {
     img: "/hero-dashboard.png",
     title: "Performance Dashboard",
-    desc: "Your complete P&L picture — equity curve, win rate, daily breakdown, and trade history in one view.",
+    desc: "Illustrative dashboard concept; advanced metrics are outside the first invited release.",
     span: "lg:col-span-2",
     badges: null as null | { label: string; color: string; note: string }[],
   },
   {
     img: "/feature-psychology.png",
     title: "Psychology Analytics",
-    desc: "Mood-to-P&L correlation, discipline scoring, and emotion trends.",
+    desc: "Roadmap concept only. Dedicated psychology analytics are disabled in the first invited release.",
     span: "",
     badges: null as null | { label: string; color: string; note: string }[],
   },
   {
     img: "/feature-replay.png",
     title: "Trade Replay",
-    desc: "Step through any trade bar-by-bar with entry and exit markers.",
+    desc: "Roadmap concept only. Replay is disabled in the first invited release.",
     span: "",
     badges: null as null | { label: string; color: string; note: string }[],
   },
   {
-    img: "/feature-broker.png",
-    title: "Multi-Broker View",
-    desc: "Connect Webull directly or import a CSV from any broker — all trades normalized into one unified dashboard.",
+    img: "/hero-dashboard.png",
+    title: "Historical Import Preview",
+    desc: "Illustrative historical trade review; one validated CSV format is used in invited testing.",
     span: "lg:col-span-2",
-    badges: [
-      { label: "Webull", color: "#00c0ff", note: "Direct" },
-      { label: "Robinhood", color: "#00c805", note: "CSV" },
-      { label: "TD / Schwab", color: "#00883a", note: "CSV" },
-      { label: "IBKR", color: "#e8001c", note: "CSV" },
-      { label: "Tastytrade", color: "#ff5900", note: "CSV" },
-      { label: "Alpaca", color: "#e5cb00", note: "CSV" },
-    ] as { label: string; color: string; note: string }[],
+    badges: null as null | { label: string; color: string; note: string }[],
   },
 ];
 
@@ -69,8 +62,7 @@ export default function Charts() {
             transition={{ delay: 0.16 }}
             className="text-text-muted mt-5 max-w-xl mx-auto"
           >
-            20+ dashboards built to turn raw trade data into the insights that actually
-            change how you trade.
+            Illustrative analytics concepts. Final feature availability and screenshots depend on UI and release certification.
           </motion.p>
         </div>
       </section>
@@ -83,12 +75,12 @@ export default function Charts() {
                 <div className="relative overflow-hidden">
                   <img
                     src={g.img}
-                    alt={g.title}
+                    alt={`${g.title} — illustrative concept, not an application screenshot`}
                     className="w-full group-hover:scale-[1.02] transition-transform duration-500"
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="font-display font-bold text-lg">{g.title}</h3>
+                  <h3 className="font-display font-bold text-lg">{g.title}</h3><p className="text-xs text-cyan mt-2">Illustrative concept — not an application screenshot</p>
                   <p className="text-sm text-text-muted mt-2 leading-relaxed">{g.desc}</p>
                   {g.badges && (
                     <div className="mt-4">
@@ -128,9 +120,9 @@ export default function Charts() {
         <Reveal>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { value: "20+", label: "Dashboards" },
-              { value: "Real-time", label: "Data sync" },
-              { value: "Every", label: "Metric that matters" },
+              { value: "History", label: "Analytics focus" },
+              { value: "CSV", label: "Invited import workflow" },
+              { value: "Planned", label: "Advanced metrics" },
             ].map((s) => (
               <div
                 key={s.label}
@@ -155,13 +147,13 @@ export default function Charts() {
                 Put your data to work.
               </h2>
               <p className="text-text-muted mt-4 max-w-md mx-auto">
-                Connect a broker or import a CSV and watch your dashboards come alive.
+                Explore the validated CSV import and historical trade review workflow when invited access opens.
               </p>
               <Link
                 to="/pricing"
                 className="gradient-btn text-white font-semibold px-7 py-3 rounded-lg inline-flex items-center gap-2 mt-8 transition-shadow"
               >
-                Start Free <ArrowRight size={18} />
+                Preview Plans <ArrowRight size={18} />
               </Link>
             </div>
           </div>

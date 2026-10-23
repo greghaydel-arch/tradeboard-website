@@ -2,6 +2,10 @@ import { Link } from "wouter";
 import { ArrowLeft } from "lucide-react";
 import type { ReactNode } from "react";
 
+// EDITORIAL REVIEW DRAFT ONLY — not approved for publication. Reconcile against
+// TradeBoard production data flows, security controls, processor list, retention,
+// billing and current counsel-approved privacy/terms before routing or deploying.
+
 function LegalLayout({ title, updated, children }: { title: string; updated: string; children: ReactNode }) {
   return (
     <main id="main-content" className="pt-16">
@@ -42,14 +46,14 @@ export function TermsOfService() {
       <p>
         All trading and investment decisions are made solely by you. You acknowledge that trading involves substantial risk of loss and is not
         suitable for all individuals. You are solely responsible for your own trading, tax, and legal decisions, including compliance with wash sale
-        rules and other tax regulations. Any tax-related features (e.g., tax reports, wash sale flags) are provided for informational convenience
-        only and are not a substitute for advice from a qualified tax professional.
+        rules and other tax regulations. Tax-reporting and wash-sale features, if introduced in a future release, would be informational only
+        and would not replace qualified tax advice.
       </p>
 
       <h2>3. Broker Connections</h2>
       <p>
-        TradeBoard connects to supported brokers via official OAuth integrations or CSV import. We never store your broker login credentials.
-        OAuth tokens are encrypted at rest. You may disconnect any broker connection at any time from your account settings.
+        The initial invited release accepts trade-history records through one validated CSV format. There is no direct OAuth broker connection or
+        automatic broker synchronization in that release. Any future read-only connection requires separate provider, security and legal review.
       </p>
 
       <h2>4. Accounts &amp; Eligibility</h2>
@@ -60,9 +64,8 @@ export function TermsOfService() {
 
       <h2>5. Subscriptions &amp; Billing</h2>
       <p>
-        Free tier accounts have no expiration. Paid plans (Pro, Pro+) are billed monthly or annually as selected at signup. You may upgrade,
-        downgrade, or cancel at any time; cancellations take effect at the end of the current billing period. No refunds are provided for partial
-        billing periods except where required by law.
+        A permanent Free tier and paid subscriptions are planned; they are not yet generally available. Final terms for billing, renewal,
+        cancellation, and refunds must be published and accepted before any paid subscription is offered. Joining the waitlist is not a purchase.
       </p>
 
       <h2>6. Acceptable Use</h2>
@@ -97,55 +100,54 @@ export function PrivacyPolicy() {
 
       <h2>1. Information We Collect</h2>
       <ul>
-        <li>Account information: name, email address, password (hashed).</li>
-        <li>Trade data: trades, positions, and history you import via CSV or connect via broker OAuth.</li>
-        <li>Psychology &amp; journal data: mood tags, reflection notes, discipline scores you choose to enter.</li>
+        <li>Account and identity information: profile details, invitation and acceptance records, and external identity-provider identifiers. The invited flow uses provider-backed email authentication; a local password-account description is inaccurate.</li>
+        <li>Historical trade records you choose to submit through the approved CSV import workflow.</li>
+        <li>Private journal text and draft records you choose to enter. Dedicated psychology collection is disabled in the first release.</li>
         <li>Usage data: pages visited, features used, device/browser information.</li>
-        <li>Payment data: processed by our third-party payment processor — we do not store full card numbers.</li>
+        <li>Billing routes are disabled for the first invited release. Any later payment processing requires approved provider disclosures and terms.</li>
       </ul>
 
       <h2>2. How We Use Your Information</h2>
       <p>
-        We use your information to operate and improve TradeBoard, sync your broker data, generate your analytics dashboards, provide customer
-        support, and communicate important account or product updates.
+        We use information to operate and improve TradeBoard, process historical trade records that users choose to import, provide analytics,
+        support users, and communicate relevant account or product updates.
       </p>
 
-      <h2>3. Broker Data &amp; OAuth</h2>
+      <h2>3. Historical Trade Imports</h2>
       <p>
-        We never store your broker login credentials. Broker connections use official OAuth 2.0 flows where available; access tokens are encrypted
-        (AES-256) at rest and refreshed automatically. You can revoke broker access at any time.
+        Initial invited access is limited to a validated historical-trade CSV format. No broker OAuth access tokens or direct broker sync are part
+        of this scope. Future integrations, if approved, would be described in updated disclosures before they become available.
       </p>
 
       <h2>4. AI Trade Coach</h2>
       <p>
-        If you use AI Trade Coach (Pro and Pro+), anonymized trade data is sent to our AI provider for analysis. We use API access configured to
-        opt out of model training on your data, and we do not send personally identifiable information beyond what's needed for the analysis.
-        AI Trade Coach does not receive live market data and analyzes only your own historical trades — it cannot and does not generate
-        forward-looking trade signals. Every conversation is logged for quality review and safety auditing. Before first use, you must
-        acknowledge that AI Trade Coach output is not financial advice.
+        AI analysis features are planned but are not part of the initial invited release. If introduced later, we will describe the actual
+        providers, data categories transmitted, retention, model-training controls and user choices before enabling those features.
+        TradeBoard's intended AI use is retrospective analytics and education, not trade signals or investment recommendations.
       </p>
 
       <h2>5. Psychology Data</h2>
       <p>
-        Mood, reflection, and discipline data is encrypted at rest, never sold or shared with third parties, and can be deleted independently of
-        your other account data at any time from Settings.
+        Private journal text is stored by the application and its hosting/database providers. Dedicated psychology tools are disabled.
+        Field-level encryption, independent deletion controls, provider retention and backup behavior must not be promised without verification.
       </p>
 
       <h2>6. Data Sharing</h2>
       <p>
         We do not sell your personal data. We share data only with service providers necessary to operate TradeBoard (e.g., hosting, payment
-        processing, broker aggregation partners), each bound by confidentiality obligations.
+        processing where active). Final service-provider identities and data-processing terms must be checked before publication.
       </p>
 
       <h2>7. Data Retention &amp; Deletion</h2>
       <p>
-        You may request deletion of your account and associated data at any time by contacting privacy@trade-board.net. We retain data only as long
-        as necessary to provide the service or as required by law.
+        The application has an asynchronous account-deletion workflow, privacy exports, cleanup retries and restore-suppression records.
+        Immediate erasure of all provider copies and backups is not established. Category-specific retention, lawful exceptions and contact ownership require approval before publication.
       </p>
 
       <h2>8. Security</h2>
       <p>
-        We use industry-standard encryption in transit (TLS) and at rest for sensitive data, including broker tokens and psychology data.
+        We implement safeguards intended to protect data. The exact encryption, access, storage and operational controls must be verified against
+        the release environment before this policy is finalized.
       </p>
 
       <h2>9. Your Rights</h2>
@@ -167,16 +169,15 @@ export function Disclaimer() {
     <LegalLayout title="Disclaimer" updated="July 3, 2026">
       <h2>Not Financial Advice</h2>
       <p>
-        TradeBoard, including all dashboards, analytics, correlation reports, and the AI Trade Coach feature, is provided for informational and
-        educational purposes only. Nothing within TradeBoard constitutes financial, investment, tax, or legal advice, and nothing should be
+        TradeBoard is intended for historical analysis, trade journaling and education. Any future AI or advanced analytics features must likewise
+        follow this informational and educational scope. Nothing within TradeBoard constitutes financial, investment, tax, or legal advice, and nothing should be
         interpreted as a recommendation to buy, sell, or hold any security or financial instrument.
       </p>
 
       <h2>Backward-Looking Analysis Only</h2>
       <p>
-        All analysis, scoring, and insights generated by TradeBoard — including the AI Trade Coach — are based entirely on your own historical
-        trade data. AI Trade Coach has no connection to live market data or real-time pricing, so it structurally cannot generate forward-looking
-        trade signals, price predictions, or buy/sell recommendations — by design, not just by policy.
+        Initial TradeBoard functionality centers on historical records submitted for retrospective analysis, not live market signals or orders.
+        AI analysis is a future feature proposal, and no technical impossibility or model-behavior guarantee is asserted for it at this stage.
       </p>
 
       <h2>Past Performance</h2>
@@ -193,7 +194,7 @@ export function Disclaimer() {
 
       <h2>Tax &amp; Wash Sale Information</h2>
       <p>
-        Tax reports and wash sale flags provided in TradeBoard are for informational convenience only and should not be relied upon as tax advice.
+        Any tax reports or wash-sale flags that may be added in future would be informational, not a substitute for a tax professional.
         Consult a licensed tax professional regarding your specific tax situation.
       </p>
 

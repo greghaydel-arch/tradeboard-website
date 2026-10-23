@@ -23,50 +23,9 @@ export default function Login() {
             </span>
           </div>
 
-          <h1 className="font-display font-bold text-2xl">Welcome back</h1>
-          <p className="text-sm text-text-muted mt-1">
-            Log in to your TradeBoard account.
-          </p>
-
-          <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
-            <div>
-              <label htmlFor="login-email" className="text-xs font-medium text-text-muted">
-                Email
-              </label>
-              <input
-                id="login-email"
-                type="email"
-                placeholder="you@example.com"
-                autoComplete="email"
-                className="mt-1.5 w-full bg-bg-elevated border border-tb-border rounded-lg px-3.5 py-2.5 text-sm outline-none focus:border-blue transition-colors"
-              />
-            </div>
-            <div>
-              <label htmlFor="login-password" className="text-xs font-medium text-text-muted">
-                Password
-              </label>
-              <input
-                id="login-password"
-                type="password"
-                placeholder="••••••••"
-                autoComplete="current-password"
-                className="mt-1.5 w-full bg-bg-elevated border border-tb-border rounded-lg px-3.5 py-2.5 text-sm outline-none focus:border-blue transition-colors"
-              />
-            </div>
-            <button
-              type="submit"
-              className="gradient-btn text-white font-semibold w-full py-2.5 rounded-lg transition-shadow"
-            >
-              Log in
-            </button>
-          </form>
-
-          <p className="text-sm text-text-muted text-center mt-6">
-            New here?{" "}
-            <Link to="/pricing" className="text-cyan hover:text-blue transition-colors">
-              Start free
-            </Link>
-          </p>
+          <h1 className="font-display font-bold text-2xl">Invited access is being prepared</h1>
+          <p className="text-sm text-text-muted mt-4">This marketing website does not sign you in to the application. Public account registration and paid checkout are closed. Invited users will receive the approved access instructions separately.</p>
+          <Link to="/waitlist" className="gradient-btn text-white font-semibold inline-block px-5 py-3 rounded-lg mt-6">Join Waitlist</Link>
         </div>
 
         <p className="text-xs text-text-dim text-center mt-6">
